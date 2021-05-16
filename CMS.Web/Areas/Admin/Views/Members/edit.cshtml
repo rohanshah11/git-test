@@ -1,0 +1,146 @@
+﻿@model CMS.Core.Dto.MemberDto
+@{
+    Model.description = System.Web.HttpUtility.HtmlDecode(Model.description);
+    ViewData["Title"] = "Update Members";
+}
+<div class="page-breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a href="/admin">Home</a>
+        </li>
+        <li>
+            Update Member
+        </li>
+    </ul>
+</div>
+<div class="page-body">
+    <div class="row">
+        <div class="col-lg-12 col-sm-12 col-xs-12">
+            <div class="row">
+                <div class="col-lg-10 col-sm-10 col-xs-10">
+                    <div class="widget radius-bordered">
+                        <div class="widget-header">
+                            <span class="widget-caption">UPDATE MEMBER</span>
+                        </div>
+                        <div class="widget-body">
+                            <form class="form-horizontal" method="post" enctype="multipart/form-data" action="/admin/members/edit">
+
+                                @Html.ValidationSummary(true)
+
+                                @Html.AntiForgeryToken()
+
+                                @Html.HiddenFor(a => a.member_id)
+
+                                <div class="form-group row">
+                                    @Html.LabelFor(a => a.full_name, new { @class = "col-md-2 control-label asterik" })
+                                    <div class="col-md-6">
+                                        @Html.TextBoxFor(a => a.full_name, new { @class = "form-control" })
+                                        <p class="text-danger">@Html.ValidationMessageFor(a => a.full_name)</p>
+                                    </div>
+                                </div>
+
+                                <div class=" form-group row">
+                                    @Html.LabelFor(a => a.Designation_id, new { @class = "col-md-2 control-label " })
+                                    <div class="col-md-6">
+                                        @Html.DropDownListFor(a => a.Designation_id, (SelectList)ViewBag.designations, new { @class = "form-control" })
+                                        <p class="text-danger">@Html.ValidationMessageFor(a => a.Designation_id)</p>
+                                    </div>
+                                </div>
+
+                                <div class=" form-group row">
+                                    @Html.LabelFor(a => a.fiscal_year_id, new { @class = "col-md-2 control-label " })
+                                    <div class="col-md-6">
+                                        @Html.DropDownListFor(a => a.fiscal_year_id, (SelectList)ViewBag.fiscalYears, new { @class = "form-control" })
+                                        <p class="text-danger">@Html.ValidationMessageFor(a => a.fiscal_year_id)</p>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    @Html.LabelFor(a => a.address, new { @class = "col-md-2 control-label" })
+                                    <div class="col-md-6">
+                                        @Html.TextBoxFor(a => a.address, new { @class = "form-control" })
+                                        <p class="text-danger">@Html.ValidationMessageFor(a => a.address)</p>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    @Html.LabelFor(a => a.description, new { @class = "col-md-2 control-label" })
+                                    <div class="col-md-8">
+                                        @Html.TextAreaFor(a => a.description, new { @class = "form-control tiny-mce", @rows = "10" })
+                                        <p class="text-danger">@Html.ValidationMessageFor(a => a.description)</p>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    @Html.LabelFor(a => a.contact_number, new { @class = "col-md-2 control-label" })
+                                    <div class="col-md-6">
+                                        @Html.TextBoxFor(a => a.contact_number, new { @class = "form-control" })
+                                        <p class="text-danger">@Html.ValidationMessageFor(a => a.contact_number)</p>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    @Html.LabelFor(a => a.is_contact_enabled, new { @class = "col-md-2 control-label" })
+                                    <div class="col-md-6">
+                                        <label>
+                                            @Html.CheckBoxFor(a => a.is_contact_enabled, new { @class = "form-control" })
+                                        </label>
+                                        <p class="text-danger">@Html.ValidationMessageFor(a => a.is_contact_enabled)</p>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    @Html.LabelFor(a => a.image_url, new { @class = "col-md-2 control-label" })
+                                    <div class="col-md-6">
+                                        <input type="file" value="Choose File" class="form-control" name="file" id="file" />
+                                        <p class="text-danger">@Html.ValidationMessageFor(a => a.image_url)</p>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <input class="btn btn-palegreen btn-lg pull-right" type="submit" value="Update" style="background-color:#2dc3e8" />
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-2 images-list" id="previewImg">
+                    <img id="image" class="image-preview" src="~/images/custom/@Model.image_url" alt="" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<style>
+    .image-preview {
+        height: 150px;
+        width: 140px;
+        float: right;
+    }
+</style>
+@section scripts{
+    <script>
+
+        $("#image_name").change(function () {
+            readURL(this);
+        });
+        function readURL(input) {
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#image').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+    </script>
+}

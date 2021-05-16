@@ -1,0 +1,67 @@
+﻿@model List<CMS.Core.Entity.Career>
+@{
+    ViewData["Title"] = "Careers";
+}
+
+<div class="main-content">
+    <section class="inner-header divider layer-overlay overlay-deep" data-bg-img="/clientside/images/default/bg5.jpg">
+        <div class="container pt-0 pb-0">
+            <div class="section-content">
+                <div class="row">
+                    <div class="col-md-12 xs-text-center">
+                        <h3 class="font-28">
+                            Career
+                        </h3>
+                        <ol class="breadcrumb white mt-10">
+                            <li><a href="/">Home</a></li>
+                            <li class="">Career</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container pb-0">
+            <div class="row text-center">
+
+                @foreach (var career in Model)
+                {
+                    <div class="col-sm-4">
+                        @{
+                            var imgSrc = "/images/";
+                            if (string.IsNullOrWhiteSpace(career.image_name))
+                            {
+                                imgSrc += "default-image.jpg";
+                            }
+                            else
+                            {
+                                imgSrc += "custom/" + career.image_name;
+
+                            }
+                           
+                        }
+                        <div class="icon-box iconbox-border iconbox-theme-colored">
+
+
+                            <img src="@imgSrc" alt="" class="" height="140">
+
+                            <h5 class="icon-box-title">@career.title.ToUpperInvariant()</h5>
+                            <p class="text-gray">Last Date: @career.closing_date</p>
+                            <a class="btn btn-primary btn-sm mt-15 mb-10" href="/career/detail/@career.career_id">View Detail</a>
+                        </div>
+                    </div>
+
+                }
+
+                
+
+            </div>
+        </div>
+    </section>
+
+
+</div>
+
+
+

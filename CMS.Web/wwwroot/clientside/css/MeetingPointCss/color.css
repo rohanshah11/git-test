@@ -1,0 +1,105 @@
+﻿.top-bar ul li a:hover,
+.foot-sec a:hover,
+.theme-color,
+a:focus,
+.breadcrumb > .active,
+.itg-button-simple:hover,
+.itg-button-simple,
+.thecube h4,
+.owl-theme .owl-nav .owl-prev:hover,
+.owl-theme .owl-nav .owl-next:hover,
+.service-sec-box1 .service-icon,
+.footer-social-icon a:hover,
+.service-sec-box1:hover i,
+.service-sec-box1:hover a,
+.service-color.service-sec-box1 .service-text h4 a:hover,
+.blog-detail a:hover,
+.team-details span i:hover,
+.meta-link li a:hover,
+.blog-recent-post a:hover {
+    color: #31aae2;
+}
+
+.top-bar ul li a.cart-box:hover,
+.theme-bg,
+.nav .open > a:focus,
+.nav .open > a:hover,
+.dropdown-menu > li > a:focus,
+.dropdown-menu > li > a:hover,
+.search_bar button:hover,
+.default-btn,
+.square-box:hover,
+.itg-button:hover,
+.theme-overlay,
+.owl-theme .owl-dots .owl-dot.active span,
+.owl-theme .owl-dots .owl-dot:hover span,
+.theme-hover figure:after,
+a.circle:hover,
+.tag-list a:hover,
+.pagination-box span:hover,
+.ui-state-active,
+.ui-widget-content .ui-state-active,
+.ui-widget-header .ui-state-active,
+a.ui-button:active,
+.ui-button:active,
+.ui-button.ui-state-active:hover,
+.timer-circle,
+.thecube .cube:before,
+.ui-accordion .ui-accordion-header:hover,
+.progress-bar,
+.twitter-feeds .owl-nav,
+.comment-box p a.title:hover {
+    background-color: #31aae2;
+}
+
+.theme-border-bottom,
+a.circle:hover,
+.ui-state-active,
+.ui-widget-content .ui-state-active,
+.ui-widget-header .ui-state-active,
+a.ui-button:active,
+.ui-button:active,
+.ui-button.ui-state-active:hover,
+.ui-accordion .ui-accordion-header:hover,
+.navbar-default .navbar-nav li a:hover:after,
+.owl-theme .owl-nav .owl-prev:hover:after,
+.owl-theme .owl-nav .owl-next:hover:after,
+.client-col .frame {
+    border-color: #31aae2;
+}
+
+
+
+/* extra-colors */
+
+.green {
+    background-color: #6fc191;
+}
+
+.yellow {
+    background-color: #edbf47;
+}
+
+.orange {
+    background-color: #ec774b;
+}
+
+.purple {
+    background-color: #c389ce;
+}
+
+.red {
+    background-color: #e16c6c;
+}
+
+.blue {
+    background-color: #4b8fec;
+}
+
+.dark-red {
+    background-color: #ec4b4b;
+}
+
+.dark-purpule {
+    background-color: #6d5d9e;
+}

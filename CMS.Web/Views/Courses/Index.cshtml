@@ -1,0 +1,60 @@
+﻿@model CMS.Web.ViewModels.CourseViewModel
+@{
+    ViewData["Title"] = "Course";
+}
+
+
+
+<!-- ******CONTENT****** -->
+<div class="content container">
+    <div class="page-wrapper">
+        <header class="page-heading clearfix">
+            <h1 class="heading-title float-left">Course</h1>
+            <div class="breadcrumbs float-right">
+                <ul class="breadcrumbs-list">
+                    <li class="breadcrumbs-label">You are here:</li>
+                    <li><a href="/">Home</a><i class="fas fa-angle-right"></i></li>
+                    <li class="current">Course</li>
+                </ul>
+            </div><!--//breadcrumbs-->
+        </header>
+        <div class="page-content">
+          
+            <div class="row page-row">
+                @{
+                    foreach (var course in Model.courses)
+                    {
+                        <div class="col-md-3 col-12 text-center">
+
+                            <div class="album-cover">
+                                @{
+                                    var imgSrc = "/images/";
+                                    if (string.IsNullOrWhiteSpace(course.file_name))
+                                    {
+                                        imgSrc += "A_blank_flag.png";
+                                    }
+                                    else
+                                    {
+                                        imgSrc += "custom/" + course.file_name;
+                                    }
+                                }
+                                <img class="img-fluid" src="@imgSrc" alt="" />
+                                <div class="desc">
+
+                                    <h4><small>@course.name.ToUpperInvariant()</small></h4>
+                                    <a class="btn btn-theme read-more" href="~/course/detail/@course.slug#">Read more<i class="fas fa-chevron-right"></i></a>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    }
+                }
+
+
+
+            </div><!--//page-row-->
+            
+        </div><!--//page-content-->
+    </div><!--//page-->
+</div><!--//content-->

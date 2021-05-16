@@ -1,0 +1,86 @@
+﻿@model List<CMS.Core.Entity.News>
+@{
+    ViewData["Title"] = "News";
+}
+    <style>
+        .blog-posts .post.style1 {
+            background-color: #fff;
+            border: 3px solid #FE9901;
+            margin-bottom: 0px;
+            position: relative;
+            height: 150px;
+        }
+    </style>
+<div class="main-content">
+    <section class="inner-header divider layer-overlay overlay-deep" data-bg-img="/clientside/images/default/bg5.jpg">
+        <div class="container pt-0 pb-0">
+            <div class="section-content">
+                <div class="row">
+                    <div class="col-md-12 xs-text-center">
+                        <h3 class="font-28">
+                            News
+                        </h3>
+                        <ol class="breadcrumb white mt-10">
+                            <li><a href="/">Home</a></li>
+                            <li class="">News</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container mt-30 mb-30 pt-30 pb-50">
+            <div class="row blog-posts">
+                @{ foreach (var news in Model)
+                    {
+                        <div class="col-xs-12 col-sm-12 col-md-6">
+                            <article class="post style1 clearfix maxwidth500">
+                                <div class="col-md-4 p-0">
+                                    <div class="entry-header">
+                                        <div class="post-thumb">
+                                            @{
+                                                var imgSrc = "/images/";
+                                                if (string.IsNullOrWhiteSpace(news.image))
+                                                {
+                                                    imgSrc += "default-image.jpg";
+                                                }
+                                                else
+                                                {
+                                                    imgSrc += "custom/" + news.image;
+
+                                                }
+                                            }
+                                            <img src="@imgSrc" alt="" class="" height="140">
+                                        </div>
+                                        <div class="entry-date entry-date-absolute">
+                                            @news.date.Day <span>@news.date.ToString("MMMM")</span><span>@news.date.Year</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-8 p-0">
+                                    <div class="entry-content pl-50 p-20 pt-30 pr-20">
+                                        <h5 class="entry-title pt-0"><a href="/news/detail/@news.slug">@news.title</a></h5>
+                                        <p> </p>
+
+                                        <a class="text-theme-colored mt-10 mb-0 pull-right flip" href="/news/detail/@news.slug#">View Details <i class="fa fa-angle-double-right"></i></a>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </div>
+                            </article>
+                            <br />
+                        </div>
+                    }
+                }
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                </div>
+            </div>
+
+        </div>
+    </section>
+</div>
+<!-- end main-content -->
+<!-- Footer -->

@@ -1,0 +1,91 @@
+﻿@model CMS.Core.Entity.Career
+@{
+    var career = Model;
+    career.description = System.Web.HttpUtility.HtmlDecode(career.description);
+    ViewData["Title"] = career.title;
+
+}
+
+
+<div class="main-content">
+    <!-- Section: inner-header -->
+    <section class="inner-header divider layer-overlay overlay-deep" data-bg-img="/clientside/images/default/bg5.jpg">
+        <div class="container pt-0 pb-0">
+            <!-- Section Content -->
+            <div class="section-content">
+                <div class="row">
+                    <div class="col-md-12 xs-text-center">
+                        <h3 class="font-28">
+                            @career.title
+                        </h3>
+                        <ol class="breadcrumb white mt-10">
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/career">Career</a></li>
+
+                            <li class="active text-theme-colored">@career.title</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="job-overview">
+                        <dl class="dl-horizontal">
+                            <dt><i class="fa fa-calendar text-theme-colored mt-5 font-15"></i></dt>
+                            <dd>
+                                <h5 class="mt-0">Opening Date:</h5>
+                                <p>@career.opening_date</p>
+                            </dd>
+                        </dl>
+                        <dl class="dl-horizontal">
+                            <dt><i class="fa fa-map-marker text-theme-colored mt-5 font-15"></i></dt>
+                            <dd>
+                                <h5 class="mt-0">Closing Date:</h5>
+                                <p>@career.closing_date</p>
+                            </dd>
+                        </dl>
+                        <dl class="dl-horizontal">
+                            <dt><i class="fa fa-user text-theme-colored mt-5 font-15"></i></dt>
+                            <dd>
+                                <h5 class="mt-0">Job Title:</h5>
+                                <p>@career.title</p>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="icon-box mb-0 p-0">
+                        <h3 class="icon-box-title pt-15 mt-0 mb-40"> @career.title</h3>
+                        <hr>
+
+                        <p class="text-gray">@Html.Raw(career.description)</p>
+                    </div>
+
+                </div>
+                <div class="col-md-3">
+                    <div>
+                         @{ 
+                        var imgsSrc = "/images/";
+                        if (string.IsNullOrWhiteSpace(career.image_name))
+                        {
+                        imgsSrc += "default-image.jpg";
+                        }
+                        else
+                        {
+                        imgsSrc += "custom/" + career.image_name;
+
+                        }
+                        }
+                        <div class="item"><img src="@imgsSrc" height="300" alt=""></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>

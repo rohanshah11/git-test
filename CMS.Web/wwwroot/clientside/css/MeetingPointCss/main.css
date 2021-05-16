@@ -1,0 +1,74 @@
+/*------------------------------------------------------------------
+[Master Stylesheet]
+
+Project:	CORPOREAL - Multipurpose Business & Corporate Portfolio HTML5 Template
+Version:	1.0.0
+Assigned to:	Themeforest
+Primary use:    
+				
+-------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------
+[Table of contents]
+
+1 Fonts
+2 Body / body
+3 Common Css
+   3.1 Reset Style / img
+   3.2 Form Inputs / input
+   3.3 Button Style / .itg-button
+   3.4 Padding Style / .pad0
+   3.5 Margin Style / .mar0
+4 Header Style
+   4.1 Navigation Bar / .navbar-brand
+   4.2 Search Field / #searchbar
+5 Owl Nav Style / .carousel-style-1
+6 Main Slider / .slider-text
+7 Heading Style / .theme-heading
+8 Service Style / .service-icon
+9 Facilities / .facilities-image
+10 Team / .staff-details
+11 Portfolio / .inner-content
+12 Testimonial / .client-col
+13 Blogs / .blog-detail
+14 Skills Style / .skill-details
+15 Page Header / .bredcrumb-section
+16 Preloader / .preloader
+17 Pages Style
+    17.1 Sidebars / .recent-posts
+    17.2 Comment Area / .comment-box
+    17.3 Pagination / .pagination-box
+    17.4 Progress Bar / .progress
+    17.5 Contact Us / .address-details
+    17.6 FAQs Style / .faq
+    17.7 Comming Soon / .comming-soon-image
+18 Footer Style / .foot-sec
+
+-------------------------------------------------------------------*/
+
+/*---bootstap.CSS ---*/
+/*---mega menu .CSS ---*/
+@import url('bootstrap.min.css');
+@import url('hover-dropdown-menu.css');
+ /*---fancybox.CSS ---*/
+@import url('jquery.fancybox.css');
+/*---acordian.CSS ---*/
+@import url('jquery-ui.css');
+/*---owl-carousal.CSS ---*/
+@import url('owl.carousel.css');
+@import url('owl.theme.default.css');
+/*---fontawesome.CSS  font ---*/
+/* theme  linia icon CSS*/
+@import url('font-awesome.min.css');
+@import url('iconfont.css');
+/* theme effect hover CSS*/
+@import url('themehover.css');
+/*---STYLE.CSS inluad style---*/
+@import url('style.css');
+/*---responsive.CSS inluad style---*/
+/*---color.CSS inluad color---*/
+@import url('responsive.css');
+@import url('color.css');
+
+
+

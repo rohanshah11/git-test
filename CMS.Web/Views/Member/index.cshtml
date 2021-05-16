@@ -1,0 +1,65 @@
+﻿@model List<CMS.Core.Entity.Member>
+@{
+    ViewData["Title"] = "Members";
+}
+<section>
+    <div class="bredcrumb-section padTB100 positionR">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="theme-heading text-center">
+                        <h3 class="Breadcrumb-title text-center">Members</h3>
+                        <span class="colorW marB10"> <i class="fa fa-angle-down" aria-hidden="true"></i> </span>
+                    </div>
+                    <div class="breadcrumb-box">
+                        <ul class="breadcrumb text-center colorW marB0">
+                            <li>
+                                <a href="/">home</a>
+                            </li>
+                            <li>Members</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="clear"></div>
+
+<!--- Theme heading end-->
+<div class="container" style="margin-top:50px;">
+    <div class="row">
+        @{
+            foreach (var member in Model)
+            {
+
+                var imgsSrc = "/images/";
+                if (string.IsNullOrWhiteSpace(member.image_url))
+                {
+                    imgsSrc += "default-image.jpg";
+                }
+                else
+                {
+                    imgsSrc += "custom/" + member.image_url;
+
+                }
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="theme-hover marB30">
+                        <figure>
+
+                            <img src="@imgsSrc" alt=""style="height:250px;">
+                            <figcaption><a href="#"><span class="icon basic-link"></span></a></figcaption>
+                        </figure>
+                        <div class="staff-details text-center padT20">
+                            <h4><a href="/member/detail/@member.slug#">@member.full_name.ToUpperInvariant()</a></h4>
+                            <p class="theme-color marB20">@member.Designation.name</p>
+
+                        </div>
+                    </div>
+                </div>
+
+            }
+        }
+
+    </div>
+</div>

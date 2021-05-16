@@ -1,0 +1,429 @@
+﻿@media screen and (max-width: 1350px) {
+    .carousel-style-1.owl-theme .owl-nav .owl-prev,
+    .carousel-style-1.owl-theme .owl-nav .owl-next {
+        float: none;
+        margin: 0 10px;
+    }
+
+    .carousel-style-1.owl-theme .owl-nav {
+        position: relative;
+        margin-top: 2%;
+    }
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1440px) {
+    .slider-text h1 {
+        padding-top: 0;
+    }
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1199px) {
+    .slider-text h1 {
+        padding-top: 5%;
+        font-size: 50px;
+    }
+
+        .slider-text h1 span {
+            font-size: 50px;
+        }
+
+    .special-font {
+        font-size: 20px;
+    }
+
+    .twitter-block .twitter-feeds .owl-nav {
+        position: absolute;
+        top: -24px;
+        width: 180px;
+    }
+
+    .timer-circle {
+        margin: 0 15px;
+    }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1024px) {
+    .slider-text h1 {
+        padding-top: 0;
+        font-size: 50px;
+    }
+
+        .slider-text h1 span {
+            font-size: 50px;
+        }
+
+    .twitter-block .twitter-feeds .owl-nav {
+        position: absolute;
+        top: -24px;
+        width: 180px;
+    }
+
+    .special-font {
+        font-size: 20px;
+    }
+
+    .timer-circle {
+        margin: 0 15px;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    .slider-text h1 {
+        padding-top: 4%;
+        font-size: 38px;
+    }
+
+        .slider-text h1 span {
+            font-size: 38px;
+        }
+
+    .slider-text p {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    .navbar-header {
+        float: left;
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid #eee;
+    }
+
+    .navbar-brand {
+        text-align: center;
+        float: left;
+        float: none;
+        display: inline-block;
+    }
+
+    .blog-detail p a span {
+        font-size: 11px;
+    }
+
+    .twitter-block p {
+        font-size: 13px;
+    }
+
+    .navbar-nav {
+        float: left;
+    }
+
+    .nav-bar-icon {
+        top: 71%;
+    }
+
+    .navbar-default .navbar-collapse,
+    .navbar-default .navbar-form {
+        display: inline-block !important;
+        width: 100%;
+    }
+
+    .special-font {
+        font-size: 14px;
+        line-height: 1.4em;
+    }
+
+    .about-us img {
+        width: 100%;
+    }
+
+    .twitter-block .twitter-feeds .owl-nav {
+        position: absolute;
+        top: -22px;
+        width: 180px;
+    }
+
+    .timer-circle {
+        margin: 0 17px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .left-side.open .dropdown-menu {
+        margin-left: -200px !important;
+        top: 103.5% !important;
+    }
+
+    ul.timer {
+        height: 120px;
+    }
+
+    .timer span {
+        display: inline-block;
+        margin-top: 4px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .theme-heading h3 {
+        font-size: 24px;
+    }
+
+    #searchbar {
+        display: none !important;
+    }
+
+    .special-section {
+        margin-top: -300px;
+    }
+
+    .small-left {
+        text-align: left;
+    }
+
+    a.navbar-brand {
+        padding: 10px 15px;
+    }
+
+    .navbar-header {
+        margin-left: -15px;
+        margin-right: -15px;
+    }
+
+    .navbar-toggle {
+        margin-top: 15px;
+        margin-right: 15px;
+    }
+
+    .navbar-default {
+        background-color: #fff;
+    }
+
+        .navbar-default .navbar-nav li a {
+            padding: 10px 15px;
+        }
+
+        .navbar-default .navbar-nav li .dropdown-menu li a,
+        .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+            color: #000;
+        }
+
+            .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover {
+                color: #000;
+            }
+
+    .navbar-brand > img {
+        padding-top: 10px;
+    }
+
+    .nav-bar-icon {
+        display: none;
+    }
+
+    .navbar-default .navbar-nav li a:after {
+        bottom: 2px;
+    }
+
+    .testimonial-carousel .owl-nav {
+        position: relative;
+        padding: 30px 85px;
+    }
+
+    .owl-carousel.partener-slides .owl-nav {
+        margin-top: 30px;
+    }
+
+    .foot-sec {
+        float: left;
+        margin-bottom: 50px;
+    }
+
+    .footer-social-icon {
+        float: none;
+    }
+
+    .bottom-footer p {
+        float: none;
+        margin-top: 10px;
+    }
+
+    .portfolio-social-icon {
+        float: none;
+    }
+
+    .pagination-box {
+        text-align: center;
+    }
+
+    .owl-theme .owl-nav .owl-prev,
+    .owl-theme .owl-nav .owl-next {
+        padding: 5px 15px;
+        font-size: 16px;
+    }
+
+    .slider-text p {
+        display: none;
+    }
+
+    .slider-text {
+        top: 0;
+        width: 100%;
+        left: 0;
+        top: 50%;
+        margin-top: -32.5px;
+    }
+
+        .slider-text h1 {
+            font-size: 20px;
+            padding: 0 12%;
+            line-height: 1.6em;
+        }
+
+            .slider-text h1 span {
+                font-size: 20px;
+            }
+
+    .navbar-nav {
+        padding: 10px 0;
+    }
+
+    .client-col {
+        padding: 0;
+    }
+
+    .special-font {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+
+    .twitter-block p {
+        padding-right: 0;
+        text-align: center;
+    }
+
+    .twitter-block i {
+        margin-right: 13px;
+    }
+
+    .twitter-feeds .owl-nav {
+        width: 100%;
+    }
+
+    .small-left {
+        float: left !important;
+    }
+
+    .comment-box figure {
+        width: 80px;
+    }
+
+    .comment-box.reply {
+        padding-left: 0;
+    }
+
+    .timer span {
+        font-size: 18px;
+    }
+
+    .timer-circle {
+        padding: 11px 10px;
+        width: 49px;
+        height: 49px;
+        margin: 0 10px;
+    }
+
+    ul.timer {
+        height: 100px;
+    }
+
+    .normal {
+        font-size: 12px !important;
+    }
+
+    .top-bar ul {
+        text-align: center;
+    }
+
+    section.special-section h1 {
+        font-size: 30px;
+    }
+
+    .portfolio-social-icon h4 {
+        text-align: center;
+    }
+
+    .portfolio-social-icon ul.footer-social-icon {
+        width: 100%;
+        text-align: center;
+    }
+
+    .address-details p {
+        text-align: left;
+        margin-bottom: 20px;
+    }
+}
+
+@media screen and (min-width: 641px) and (max-width: 767px) {
+    .slider-text h1 {
+        padding-top: 0%;
+        font-size: 30px;
+    }
+
+        .slider-text h1 span {
+            font-size: 30px;
+        }
+
+    .testimonial-carousel .owl-nav {
+        padding: 30px 220px;
+    }
+
+    .comming-soon-content {
+        padding: 17% 0;
+    }
+}
+
+@media screen and (min-width: 481px) and (max-width: 640px) {
+    .slider-text h1 {
+        padding-top: 4%;
+        font-size: 22px;
+    }
+
+        .slider-text h1 span {
+            font-size: 22px;
+        }
+
+    .itg-button,
+    .itg-button-simple {
+        padding: 10px 30px;
+        font-size: 16px;
+    }
+
+    .testimonial-carousel .owl-nav {
+        position: relative;
+        padding: 30px 140px;
+    }
+}
+
+@media screen and (min-width: 480px) and (max-width: 480px) {
+    .slider-text h1 {
+        padding-top: 4%;
+        font-size: 22px;
+    }
+
+        .slider-text h1 span {
+            font-size: 22px;
+        }
+}
+
+@media screen and (min-width: 320px) and (max-width: 480px) {
+    .top-bar ul li {
+        display: inline-block;
+        margin: 0 8px;
+        font-size: 14px;
+    }
+
+    .error-content h2 {
+        font-size: 24px;
+    }
+
+    .itg-button,
+    .itg-button-simple {
+        padding: 6px 20px;
+        font-size: 14px;
+        margin-top: 10px;
+    }
+
+    .comming-soon-content p {
+        font-size: 13px;
+    }
+}

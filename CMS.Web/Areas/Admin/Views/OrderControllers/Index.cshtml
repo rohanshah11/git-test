@@ -1,0 +1,160 @@
+﻿@model CMS.Web.Areas.Core.ViewModels.OrderViewIndexViewModel;
+@{
+    ViewData["Title"] = "Customer Order";
+
+    var list = new List<SelectListItem>() {
+new SelectListItem { Text = "10", Value = "10"},
+new SelectListItem { Text = "20", Value = "20" },
+new SelectListItem { Text = "30", Value = "30" },
+new SelectListItem { Text = "40", Value = "40"},
+new SelectListItem { Text = "50", Value = "50" }
+};
+}
+
+
+<div class="page-breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a href="/admin">Home</a>
+        </li>
+
+        <li class="active">Order</li>
+    </ul>
+</div>
+<div class="page-body">
+    <div class="row">
+        <div class="col-xs-12 col-md-12">
+            <div class="widget">
+                <div class="row">
+                    <div class="col-xs-12 col-md-12">
+                        <div class="widget">
+                            <div class="widget-header ">
+                                <span class="widget-caption">VIEW ORDER</span>
+                                <div class="widget-buttons">
+                                    <a href="tables-data.html#" data-toggle="maximize">
+                                        <i class="fa fa-expand"></i>
+                                    </a>
+                                    <a href="tables-data.html#" data-toggle="collapse">
+                                        <i class="fa fa-minus"></i>
+                                    </a>
+                                    <a href="tables-data.html#" data-toggle="dispose">
+                                        <i class="fa fa-times"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="widget-body">
+                                <div class="table-toolbar">
+                                    <div class="table-toolbar">
+                                        <form action="/admin/order" method="get" class="row col-sm-push">
+
+                                            <div class="col-sm-6">
+                                                @Html.TextBox("name", "", new { @class = "form-control no-padding", placeholder = "Title" })
+                                            </div>
+                                            <div class="col-sm-3">
+                                                @Html.DropDownList("number_of_rows", list, new { @class = "form-control pull-right" })
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <button type="submit" class="btn btn-primary waves-effect w-md waves-light" style="margin-left:5px;">Load <i class="fa fa-spinner "></i></button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <form action="/admin/order" method="get" class="row col-sm-push">
+                                    </form>
+                                </div>
+                                <table class="table m-0">
+                                    <thead class="bg-custom text-white">
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Customer Name</th>
+                                            <th>Date</th>
+                                            <th>Time</th>
+                                            <th>Address</th>
+                                            <th>Email</th>
+                                            <th>Contact</th>
+                                            <th>Secondary Contact</th>
+                                            <th>Amount</th>
+                                            <th>Status</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @{
+                                            var sn = 1;
+                                            foreach (var order in Model.order_details)
+                                            {
+                                                <tr>
+                                                    <td>@sn</td>
+                                                    <td>@order.customer_name</td>
+                                                    <td>@order.order_date.ToString("yyyy-MM-dd")</td>
+                                                    <td>@order.order_date.ToString(" h:mm:ss tt")</td>
+
+                                                    <td>@order.address</td>
+                                                    <td>@order.email</td>
+                                                    <td>@order.primary_contact</td>
+                                                    <td>@order.secondary_contact</td>
+                                                    <td>@order.total_amount</td>
+                                                    <td>
+                                                        @{
+                                                            if (order.is_completed)
+                                                            {
+                                                                <label class="badge badge-success">Completed</label>
+
+                                                            }
+                                                            else
+                                                            {
+                                                                <label class="badge badge-danger">Remained</label>
+
+                                                            }
+
+                                                        }
+                                                    </td>
+                                                    <td>
+                                                        <div class="btn-group">
+                                                            <a class="btn btn-primary " href="javascript:void(0);">Actions</a>
+                                                            <a class="btn btn-primary  dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);" aria-expanded="false"><i class="fa fa-angle-down"></i></a>
+                                                            <ul class="dropdown-menu dropdown-primary">
+                                                                <li>
+                                                                    <a href="/admin/order/ViewOrder/@order.order_id">View Order</a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="/admin/order/report">View Report</a>
+                                                                </li>
+                                                                <li class="divider"></li>
+                                                                <li>
+                                                                <li>
+                                                                    <a href="/admin/order/orderDelete/@order.order_id">Delete</a>
+                                                                </li>
+                                                                <li>
+                                                                    @{
+                                                                        if (order.is_completed)
+                                                                        {
+                                                                            <a href="/admin/order/disable/@order.order_id">Remained Order</a>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <a href="/admin/order/enable/@order.order_id">Completed Order</a>
+
+                                                                        }
+                                                                    }
+
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                sn++;
+                                            }
+                                        }
+                                    </tbody>
+                                </table>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

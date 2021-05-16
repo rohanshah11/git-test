@@ -1,0 +1,53 @@
+﻿@model CMS.Core.Entity.Services
+@{
+    var detail = Model;
+    ViewData["Title"] = detail.name;
+}
+    <section>
+        <div class="bredcrumb-section padTB100 positionR">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="theme-heading text-center">
+                            <h3 class="Breadcrumb-title text-center">Service detail</h3>
+                            <span class="colorW marB10"> <i class="fa fa-angle-down" aria-hidden="true"></i> </span>
+                        </div>
+                        <div class="breadcrumb-box">
+                            <ul class="breadcrumb text-center colorW marB0">
+                                <li>
+                                    <a href="/">home</a>
+                                </li>
+                                <li>@detail.name</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section style="margin-bottom:20px;margin-top:20px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 wow fadeInUp animation-delay4">
+                    <h1 class="colorB marB10 title text-left"><a href="#">@detail.name</a></h1>
+
+                    @Html.Raw(System.Web.HttpUtility.HtmlDecode(detail.description))
+
+                </div>
+                <div class="col-md-4 wow fadeInRight animation-delay4">
+                    @{
+                        var imgSrc = "/images/";
+                        if (string.IsNullOrWhiteSpace(detail.image))
+                        {
+                            imgSrc += "default-image.jpg";
+                        }
+                        else
+                        {
+                            imgSrc += "custom/" + detail.image;
+                        }
+                    }
+                    <img src="@imgSrc" alt="" height="300">
+                </div>
+            </div>
+        </div>
+    </section>

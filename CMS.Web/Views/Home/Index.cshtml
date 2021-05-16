@@ -1,0 +1,483 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IHtmlLocalizer<SharedResource> Localizer
+
+@{
+    var setups = (List<CMS.Core.Entity.Setup>)ViewBag.setup;
+
+    var OpeninngHours = setups.Where(a => a.key == CMS.Web.Models.SetupKeys.getOpeningHours).SingleOrDefault()?.value;
+    var days = setups.Where(a => a.key == CMS.Web.Models.SetupKeys.getDays).SingleOrDefault()?.value;
+    var hours = setups.Where(a => a.key == CMS.Web.Models.SetupKeys.getHours).SingleOrDefault()?.value;
+    var contactNo = setups.Where(a => a.key == CMS.Web.Models.SetupKeys.getPhoneNumberKey).SingleOrDefault()?.value;
+    var email = setups.Where(a => a.key == CMS.Web.Models.SetupKeys.getEmailKey).SingleOrDefault()?.value;
+
+    var address = setups.Where(a => a.key == CMS.Web.Models.SetupKeys.getAddressKey).SingleOrDefault()?.value;
+}
+@model CMS.Core.Dto.AppointmentDto
+
+
+<div class="clear"></div>
+<!--//================Slider start==============//-->
+<section id="slider-section">
+
+    <div id="main-slider" class="owl-carousel owl-theme slider positionR">
+        @{
+            var ssn = 1;
+            foreach (var slider in ViewBag.sliderImages)
+            {
+                var desc = "";
+                if (slider.description != null)
+                {
+                    if (slider.description.Length > 60)
+                    {
+                        desc = slider.description.Substring(0, 60);
+                    }
+                    else
+                    {
+                        desc = slider.description;
+                    }
+                }
+                if (@slider.image_name != null)
+                {
+                    <div class="item positionR">
+
+                        <figure class="slider-image positionR">
+
+                            <img src="/images/custom/@slider.image_name" alt="" class="hidden-xs" />
+                            <img src="/images/custom/@slider.image_name" alt="" class="hidden-sm hidden-lg hidden-md" />
+
+                        </figure>
+
+                        <div class="slider-text positionA text-center">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-8 col-sm-8 col-xs-10 col-md-offset-2 col-sm-offset-2 col-xs-offset-1 text-center">
+                                        <h1><span class="theme-color">@Html.Raw(slider.title)</span></h1>
+                                        <p>
+                                            @desc
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                }
+                ssn++;
+            }
+        }
+    </div>
+
+</section>
+<section>
+
+    <div class="container"style="margin-top:140px;">
+        @{
+            if (ViewBag.homePage != null)
+            {
+                <div class="row">
+                    <div class="col-md-6 col-sm-12 col-xs-12">
+                        <div class="about-us positionR marB30">
+                            <figure>
+                                <img src="~/images/custom/@ViewBag.homePage.image_name" alt="" />
+                            </figure>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-12 col-xs-12">
+                        <div class="about-us marB0">
+                            <h3 class="">Why Choose Us</h3>
+                            @if (System.Web.HttpUtility.HtmlDecode(ViewBag.homePage.description).Length > 1800)
+                            {
+                                <p class="text-left">@Html.Raw(System.Web.HttpUtility.HtmlDecode(ViewBag.homePage.description).Substring(0, 1800))</p>
+                            }
+                            else
+                            {
+                                <p class="text-left">@Html.Raw(System.Web.HttpUtility.HtmlDecode(ViewBag.homePage.description))</p>
+                            }
+                            @if (ViewBag.homePage.description.Length > 1800)
+                            {
+
+                                <p><a class="itg-button" href="/page/@ViewBag.homePage.slug">LEARN MORE</a></p>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+    <div class="clear"></div>
+    @*<div class="container">
+        <div class="row padB70">
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="service-color service-sec-box1 pad30 marB30">
+                    <div class="service-icon">
+                        <i class="fa fa-microphone" aria-hidden="true"></i>
+                    </div>
+                    <div class="service-text">
+                        <h4 class="title"><a href="service-detail.html">microphone</a></h4>
+                        <p>
+                            Class aptent taciti estied
+                            aliquam ellus pers piciat unde
+                            omnis dolorem dantium.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="service-color service-sec-box1 pad30 marB30">
+                    <div class="service-icon">
+                        <i class="fa fa-wifi" aria-hidden="true"></i>
+                    </div>
+                    <div class="service-text">
+                        <h4 class="title"><a href="service-detail.html">wifi</a></h4>
+                        <p>
+                            Class aptent taciti estied
+                            aliquam ellus pers piciat unde
+                            omnis dolorem dantium.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="service-color service-sec-box1 pad30 marB30">
+                    <div class="service-icon">
+                        <i class="fa fa-headphones" aria-hidden="true"></i>
+                    </div>
+                    <div class="service-text">
+                        <h4 class="title"><a href="service-detail.html">headphones</a></h4>
+                        <p>
+                            Class aptent taciti estied
+                            aliquam ellus pers piciat unde
+                            omnis dolorem dantium.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="service-color service-sec-box1 pad30 marB30">
+                    <div class="service-icon">
+                        <i class="fa fa-refresh" aria-hidden="true"></i>
+                    </div>
+                    <div class="service-text">
+                        <h4 class="title"><a href="service-detail.html">refresh</a></h4>
+                        <p>
+                            Class aptent taciti estied
+                            aliquam ellus pers piciat unde
+                            omnis dolorem dantium.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="service-color service-sec-box1 pad30 marB30">
+                    <div class="service-icon">
+                        <i class="fa fa-gavel" aria-hidden="true"></i>
+                    </div>
+                    <div class="service-text">
+                        <h4 class="title"><a href="service-detail.html">legal</a></h4>
+                        <p>
+                            Class aptent taciti estied
+                            aliquam ellus pers piciat unde
+                            omnis dolorem dantium.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="service-color service-sec-box1 pad30 marB30">
+                    <div class="service-icon">
+                        <i class="fa fa-recycle" aria-hidden="true"></i>
+                    </div>
+                    <div class="service-text text-left">
+                        <h4 class="title"><a href="service-detail.html">recycle</a></h4>
+                        <p>
+                            Class aptent taciti estied
+                            aliquam ellus pers piciat unde
+                            omnis dolorem dantium.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>*@
+
+</section>
+<!--//================About end==============//-->
+<div class="clear"></div>
+<!--//================Our Staff starts==============//-->
+<section class="padT100">
+    <!--- Theme heading start-->
+    <div class="theme-heading marB30 positionR">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-6 col-xs-10  col-md-offset-4 col-sm-offset-3 col-xs-offset-1 heading-box text-center">
+                    <h3 class="marB10">Our Staff</h3>
+                    <span class="theme-color marB10"> <i class="fa fa-angle-down" aria-hidden="true"></i> </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--- Theme heading end-->
+    <div class="container">
+        <div class="row">
+            @{
+                foreach (var staff in ViewBag.members)
+                {
+                    var imgSrc = "/images/";
+                    if (string.IsNullOrWhiteSpace(staff.image_url))
+                    {
+                        imgSrc += "default-image.jpg";
+                    }
+                    else
+                    {
+                        imgSrc += "custom/" + staff.image_url;
+
+                    }
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="theme-hover marB30">
+                            <figure>
+
+                                <img src="@imgSrc" alt="">
+                                <figcaption><a href="#"><span class="icon basic-link"></span></a></figcaption>
+                            </figure>
+                            <div class="staff-details text-center padT20">
+                                <h4><a href="team-detail.html">@staff.full_name</a></h4>
+                                <p class="theme-color marB20">@staff.Designation.name</p>
+                                <p class="mar0">
+                                    <a href="#" class="circle"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                    <a href="#" class="circle"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                    <a href="#" class="circle"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <p><a class="itg-button" href="/member/@staff.slug">Read More</a></p>
+
+
+                }
+            }
+
+        </div>
+    </div>
+</section>
+<!--//================Our Staff end==============//-->
+<div class="clear"></div>
+<!--//================portfolio starts==============//-->
+<!--<section class="padT70">-->
+    <!--- Theme heading start-->
+    <!--<div class="theme-heading marB30 positionR">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-6 col-xs-10  col-md-offset-4 col-sm-offset-3 col-xs-offset-1 heading-box text-center">
+                    <h3 class="marB10">Our portfolio</h3>
+                    <span class="theme-color marB10"> <i class="fa fa-angle-down" aria-hidden="true"></i> </span>
+                </div>
+            </div>
+        </div>
+    </div>-->
+    <!--- Theme heading end-->
+    <!--<div class="container-fluid">
+        <div class="row">
+            @{
+                foreach (var gallery_images in ViewBag.gallery)
+                {
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                        <div class="row">
+                            <div class="theme-hover sec">
+                                <figure>
+                                    @{
+                                        var imgSrc = "/images/";
+                                        if (string.IsNullOrWhiteSpace(gallery_images.image_name))
+                                        {
+                                            imgSrc += "default-image.jpg";
+                                        }
+                                        else
+                                        {
+                                            imgSrc += "custom/" + gallery_images.image_name;
+
+                                        }
+
+                                    }
+                                    <img src="@imgSrc" alt="" style="height:350px;width:500px;">
+                                    <figcaption>
+                                        <div class="inner-content">
+                                            <h2><a href="@imgSrc" class="fancybox" data-fancybox-group="group">@gallery_images.title</a></h2>
+                                            <p>lorem ipsum</p>
+                                        </div>
+                                        <p class="left-icon"><a href="@imgSrc" class="fancybox" data-fancybox-group="group"><span class="icon arrows-expand"></span></a></p>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</section>-->
+<!--//================portfolio end==============//-->
+<div class="clear"></div>
+<!--//================Testimonial starts==============//-->
+<section class="padT100 padB100">
+    <!--- Theme heading start-->
+    <div class="theme-heading marB30 positionR">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-6 col-xs-10  col-md-offset-4 col-sm-offset-3 col-xs-offset-1 heading-box text-center">
+                    <h3 class="marB10">Testimonial</h3>
+                    <span class="theme-color marB10"> <i class="fa fa-angle-down" aria-hidden="true"></i> </span>
+                    <p class=" marB10">
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--- Theme heading end-->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1 col-xs-12 col-xs-offset-0">
+                <div id="testimonial" class="owl-carousel owl-theme sliders testimonial-carousel">
+                    @{
+                        var test = 1;
+                        foreach (var testimonialSlider in ViewBag.testimonial)
+                        {
+                            if (testimonialSlider != null)
+                            {
+                                var testimonialClass = "";
+                                if (test == 1)
+                                {
+                                    testimonialClass = "active";
+                                }
+                                var imgSrc = "/images/";
+                                if (string.IsNullOrWhiteSpace(testimonialSlider.image_name))
+                                {
+                                    imgSrc += "default-image.jpg";
+                                }
+                                else
+                                {
+                                    imgSrc += "custom/" + testimonialSlider.image_name;
+
+                                }
+                                <div class="client-col text-center">
+                                    <div class="frame">
+                                        <img src="@imgSrc" alt="" class="img-circle">
+                                    </div>
+                                    <div class="text-box">
+                                        <strong class="name">@testimonialSlider.person_name</strong>
+                                    </div>
+                                    <p>
+                                        @testimonialSlider.statement
+                                    </p>
+                                    <div class="text-box">
+                                        <span class="theme-color">@testimonialSlider.designation</span>
+                                    </div>
+                                </div>
+                                test++;
+                            }
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--//================Testimonial end==============//-->
+<div class="clear"></div>
+<!--//================Blog starts==============//-->
+<section class="padT100 padB70 bagG">
+    <!--- Theme heading start-->
+    <div class="theme-heading marB30 positionR">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-6 col-xs-10  col-md-offset-4 col-sm-offset-3 col-xs-offset-1 heading-box text-center">
+                    <h3 class="marB10">Our Blog</h3>
+                    <span class="theme-color marB10"> <i class="fa fa-angle-down" aria-hidden="true"></i> </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--- Theme heading end-->
+    <div class="container">
+        <div class="row">
+            @foreach (var blog in ViewBag.blog)
+            {
+                var imgSrc = "/images/";
+                if (string.IsNullOrWhiteSpace(blog.image_name))
+                {
+                    imgSrc += "default-image.jpg";
+                }
+                else
+                {
+                    imgSrc += "custom/" + blog.image_name;
+
+                }
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="blog-img marB20">
+                        <figure>
+                            <img src="@imgSrc" alt="" />
+                        </figure>
+                    </div>
+                    <div class="blog-detail marB30">
+                        <h4 class="colorB marB10 title text-left"><a href="blog-single-sidebar.html">@blog.title</a></h4>
+                        <p class="marB10 text-left">
+                            <a href="index.html#"><span class="marR10"><i class="fa fa-calendar marR5" aria-hidden="true"></i>@blog.posted_on</span></a>
+                        </p>
+                        @if (System.Web.HttpUtility.HtmlDecode(blog.description).Length > 300)
+                        {
+                            <p class="marB10 text-left">@Html.Raw(System.Web.HttpUtility.HtmlDecode(blog.description).Substring(0, 300))</p>
+                        }
+                        else
+                        {
+                            <p class="marB10 text-left">@Html.Raw(System.Web.HttpUtility.HtmlDecode(blog.description))</p>
+                        }
+                        @if (blog.description.Length > 300)
+                        {
+
+                            <p><a class="marB10 text-left" href="/blog/@ViewBag.homePage.slug">Read more<i class="fa fa-angle-double-right marL10" aria-hidden="true"></i></a></p>
+                        }
+
+                    </div>
+                </div>
+
+            }
+
+        </div>
+    </div>
+</section>
+<!--//================Blog end==============//-->
+<div class="clear"></div>
+<!--//================partener starts==============//-->
+<section>
+    <div class="container">
+        <div class="row padT40 padB40">
+            <div id="partener-slider" class="owl-carousel partener-slides owl-theme owl-loaded owl-drag carousel-style-1 partener-carousel">
+                <div class="col-md-12  col-sm-12 col-xs-12">
+                    @{ foreach (var part in ViewBag.partners)
+                        {
+                            var imgSrc = "/images/";
+                            if (string.IsNullOrWhiteSpace(part.logo_name))
+                            {
+                                imgSrc += "default-image.jpg";
+                            }
+                            else
+                            {
+                                imgSrc += "custom/" + part.logo_name;
+
+                            }
+                            <div class="item">
+                                <figure class="border-box">
+                                    <a href="//@part.web_url" target="_blank">
+                                        <img src="@imgSrc" alt="" style="height:150px;width:260px;">
+                                    </a>
+                                </figure>
+                            </div>
+                        }
+
+                    }
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>

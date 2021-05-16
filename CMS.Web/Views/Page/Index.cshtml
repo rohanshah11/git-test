@@ -1,0 +1,65 @@
+﻿@model CMS.Web.ViewModels.PageDetail
+@{
+    var pages = Model;
+    pages.description = System.Web.HttpUtility.HtmlDecode(Model.description);
+    ViewData["Title"] = pages.title;
+
+}
+
+<section>
+    <div class="bredcrumb-section padTB100 positionR">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="theme-heading text-center">
+                        <h3 class="Breadcrumb-title text-center">about us</h3>
+                        <span class="colorW marB10"> <i class="fa fa-angle-down" aria-hidden="true"></i> </span>
+                    </div>
+                    <div class="breadcrumb-box">
+                        <ul class="breadcrumb text-center colorW marB0">
+                            <li>
+                                <a href="/">home</a>
+                            </li>
+                            <li>About us</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--//================Breadcrumb end==============//-->
+<div class="clear"></div>
+<!--//================About us starts==============//-->
+<section class="padT100">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-12 col-xs-12">
+                <div class="about-us positionR marB30">
+                    <figure>
+                        @{
+                            var imgSrc = "/images/";
+                            if (string.IsNullOrWhiteSpace(pages.image_name))
+                            {
+                                imgSrc += "default-image.jpg";
+                            }
+                            else
+                            {
+                                imgSrc += "custom/" + pages.image_name;
+                            }
+                        }
+                        <img src="@imgSrc" alt="" />
+                    </figure>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12 col-xs-12">
+                <div class="about-us marB30">
+                    <h3 class="marB10">@pages.title</h3>
+                    <p>
+                        @Html.Raw(System.Web.HttpUtility.HtmlDecode(pages.description))
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

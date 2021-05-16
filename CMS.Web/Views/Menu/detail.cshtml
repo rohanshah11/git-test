@@ -1,0 +1,58 @@
+﻿@model CMS.Web.Models.MenuModel
+@{
+    var detail = Model;
+    ViewData["Title"] = detail.name;
+}
+
+    <section>
+        <div class="bredcrumb-section padTB60 positionR">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="theme-heading text-center">
+                            <h3 class="Breadcrumb-title  text-center">Details</h3>
+                            <span class="colorW marB10"> <i class="fa fa-angle-down" aria-hidden="true"></i> </span>
+                        </div>
+                        <div class="breadcrumb-box">
+                            <ul class="breadcrumb text-center colorW marB0">
+                                <li>
+                                    <a href="/">home</a>
+                                </li>
+                                <li>@detail.name</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<section class="welcome-part home-icon fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms"style="margin-top:5px;margin-right:15px;">
+
+    <div class="container">
+        <div class="build-title">
+            <h2>@detail.name</h2>
+
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <p><i class="fa fa-inr" aria-hidden="true"></i> : @detail.unit_price</p>
+                <p> @Html.Raw(System.Web.HttpUtility.HtmlDecode(detail.description))</p>
+
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @{
+                    var imgSrc = "/images/";
+                    if (string.IsNullOrWhiteSpace(detail.image_name))
+                    {
+                        imgSrc += "default-image.jpg";
+                    }
+                    else
+                    {
+                        imgSrc += "custom/" + detail.image_name;
+                    }
+                }
+                <img src="@imgSrc" alt="" style="height:400px; width:100%;">
+            </div>
+        </div>
+    </div>
+</section>

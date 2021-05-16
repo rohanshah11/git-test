@@ -1,0 +1,92 @@
+﻿@model List<CMS.Core.Entity.FileUpload>
+@{
+    ViewData["Title"] = "Files";
+
+    var imageFormats = new[] { ".jpeg", ".png", ".jpg" };
+
+    var docFormats = new[] { ".xls", ".xlsx" };
+
+    var pdfFormats = new[] { ".pdf" };
+
+    var powerPointFormats = new[] { ".ppt", ".pptx" };
+
+}
+
+
+<!-- ******CONTENT****** -->
+<div class="content container">
+    <div class="page-wrapper">
+        <header class="page-heading clearfix">
+            <h1 class="heading-title float-left">Files <small></small></h1>
+            <div class="breadcrumbs float-right">
+                <ul class="breadcrumbs-list">
+                    <li class="breadcrumbs-label">You are here:</li>
+                    <li><a href="/">Home</a><i class="fas fa-angle-right"></i></li>
+                    <li class="current">File</li>
+                </ul>
+            </div><!--//breadcrumbs-->
+        </header>
+        <div class="page-content">
+            <div class="row page-row">
+                @{ foreach (var file in Model)
+                    {
+
+                        <div class="col-md-2 col-12 text-center">
+                            <div class="album-view" >
+                                <a href="/images/custom/@file.file_name" target="_blank"><img class="img-fluid" src="@getImage(file.file_name)" alt="@file.title" /></a>
+                                <div class="desc">
+                                    @if (isImageFile(file.file_name))
+                                    {
+                                        <h4><small><a href="images/custom/@file.file_name" data-toggle="lightbox" data-title="@file.title" data-footer="@file.description">@file.title</a></small></h4>
+                                    }
+                                    <p>@Html.Raw(file.description)</p>
+                                </div>
+                            </div>
+                        </div>
+                        if (isImageFile(file.file_name))
+                        {
+                            @:</a>
+                        }
+
+                    }
+                }
+            </div><!--//page-row-->
+
+        </div><!--//page-content-->
+        <LeadingEdgePager info="@ViewBag.pagerInfo"></LeadingEdgePager>
+    </div><!--//page-->
+</div><!--//content-->
+
+<!-- Main Container Starts -->
+
+@{
+
+    string getImage(string file_name)
+    {
+        var extension = System.IO.Path.GetExtension(file_name).ToLower();
+
+        if (imageFormats.Contains(extension))
+        {
+            return "/images/custom/" + file_name;
+        }
+
+        if (docFormats.Contains(extension))
+        {
+            return "/images/doc.png";
+        }
+
+        if (pdfFormats.Contains(extension))
+        {
+            return "/images/pdf.png";
+        }
+
+        return "/images/ppt.png";
+    }
+
+    bool isImageFile(string file_name)
+    {
+        var extension = System.IO.Path.GetExtension(file_name).ToLower();
+
+        return imageFormats.Contains(extension);
+    }
+}

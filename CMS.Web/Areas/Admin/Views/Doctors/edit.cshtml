@@ -1,0 +1,180 @@
+﻿@model CMS.Core.Dto.DoctorsDto
+@{
+    ViewData["Title"] = "Update Doctors";
+}
+<div class="page-breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a href="/admin">Home</a>
+        </li>
+        <li>
+            Update Doctors
+        </li>
+    </ul>
+</div>
+<div class="page-body">
+    <div class="row">
+        <div class="col-lg-12 col-sm-12 col-xs-12">
+            <div class="row">
+                <div class="col-lg-12 col-sm-12 col-xs-12">
+                    <div class="widget radius-bordered">
+                        <div class="widget-header">
+                            <span class="widget-caption">UPDATE Doctors</span>
+                        </div>
+                        <div class="widget-body">
+                            <form class="form-horizontal" method="post" enctype="multipart/form-data" action="/admin/doctors/edit">
+
+                                @Html.ValidationSummary(true)
+
+                                @Html.AntiForgeryToken()
+
+                                @Html.HiddenFor(a => a.doctor_id)
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        @Html.LabelFor(a => a.name, new { @class = "col-md-3 control-label asterik" })
+
+                                        <div class="col-md-9">
+                                            @Html.TextBoxFor(a => a.name, new { @class = "form-control" })
+                                            <p class="text-danger">@Html.ValidationMessageFor(a => a.name)</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        @Html.LabelFor(a => a.address, new { @class = "col-md-3 control-label" })
+                                        <div class="col-md-9">
+                                            @Html.TextBoxFor(a => a.address, new { @class = "form-control" })
+                                            <p class="text-danger">@Html.ValidationMessageFor(a => a.address)</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        @Html.LabelFor(a => a.education, new { @class = "col-md-3 control-label" })
+                                        <div class="col-md-9">
+                                            @Html.TextAreaFor(a => a.education, new { @class = "form-control" })
+                                        </div>
+                                        <p class="text-danger">@Html.ValidationMessageFor(a => a.education)</p>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        @Html.LabelFor(a => a.experience, new { @class = "col-md-3 control-label" })
+                                        <div class="col-md-9">
+                                            @Html.TextAreaFor(a => a.experience, new { @class = "form-control " })
+                                            <p class="text-danger">@Html.ValidationMessageFor(a => a.experience)</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        @Html.LabelFor(a => a.speciality, new { @class = "col-md-3 control-label" })
+                                        <div class="col-md-9">
+                                            @Html.TextAreaFor(a => a.speciality, new { @class = "form-control" })
+                                            <p class="text-danger">@Html.ValidationMessageFor(a => a.speciality)</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        @Html.LabelFor(a => a.contact_number, new { @class = "col-md-3 control-label" })
+                                        <div class="col-md-9">
+                                            @Html.TextBoxFor(a => a.contact_number, new { @class = "form-control" })
+                                            <p class="text-danger">@Html.ValidationMessageFor(a => a.contact_number)</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        @Html.LabelFor(a => a.is_contact_enabled, new { @class = "col-md-3 control-label" })
+                                        <div class="col-md-9">
+                                            <label>
+                                                @Html.CheckBoxFor(a => a.is_contact_enabled, new { @class = "form-control" })
+                                            </label>
+                                            <p class="text-danger">@Html.ValidationMessageFor(a => a.is_contact_enabled)</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        @Html.LabelFor(a => a.email, new { @class = "col-md-3 control-label" })
+                                        <div class="col-md-9">
+                                            @Html.TextBoxFor(a => a.email, new { @class = "form-control" })
+                                            <p class="text-danger">@Html.ValidationMessageFor(a => a.email)</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        @Html.LabelFor(a => a.facebook, new { @class = "col-md-3 control-label" })
+
+                                        <div class="col-md-9">
+                                            @Html.TextBoxFor(a => a.facebook, new { @class = "form-control" })
+                                            <p class="text-danger">@Html.ValidationMessageFor(a => a.facebook)</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        @Html.LabelFor(a => a.twitter, new { @class = "col-md-3 control-label" })
+                                        <div class="col-md-9">
+                                            @Html.TextBoxFor(a => a.twitter, new { @class = "form-control" })
+                                            <p class="text-danger">@Html.ValidationMessageFor(a => a.twitter)</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        @Html.LabelFor(a => a.website, new { @class = "col-md-3 control-label" })
+                                        <div class="col-md-9">
+                                            @Html.TextBoxFor(a => a.website, new { @class = "form-control" })
+                                            <p class="text-danger">@Html.ValidationMessageFor(a => a.website)</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        @Html.LabelFor(a => a.image, new { @class = "col-md-3 control-label" })
+                                        <div class="col-md-9">
+                                            <input type="file" class="form-control" value="Choose File" name="file" id="file" />
+                                            <p class="text-danger">@Html.ValidationMessageFor(a => a.image)</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-2  images-list" id="previewImg">
+                                        <img id="image" class="image-preview" src="~/images/custom/@Model.image" alt="" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <input class="btn btn-palegreen pull-right" type="submit" value="Update" />
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .image-preview {
+        height: 150px;
+        width: 140px;
+        float: right;
+    }
+</style>
+@section scripts{
+    <script>
+
+        $("#file").change(function () {
+            readURL(this);
+        });
+        function readURL(input) {
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#image').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+    </script>
+}
+

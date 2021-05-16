@@ -1,0 +1,226 @@
+﻿@model CMS.Web.ViewModels.MenuIndexViewModel
+@{
+    ViewData["Title"] = "Item";
+}
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IHtmlLocalizer<SharedResource> Localizer
+
+@{
+    var setups = (List<CMS.Core.Entity.Setup>)ViewBag.setup;
+
+    var OpeninngHours = setups.Where(a => a.key == CMS.Web.Models.SetupKeys.getOpeningHours).SingleOrDefault()?.value;
+    var days = setups.Where(a => a.key == CMS.Web.Models.SetupKeys.getDays).SingleOrDefault()?.value;
+    var hours = setups.Where(a => a.key == CMS.Web.Models.SetupKeys.getHours).SingleOrDefault()?.value;
+    var contactNo = setups.Where(a => a.key == CMS.Web.Models.SetupKeys.getPhoneNumberKey).SingleOrDefault()?.value;
+    var email = setups.Where(a => a.key == CMS.Web.Models.SetupKeys.getEmailKey).SingleOrDefault()?.value;
+    var qrCode = setups.Where(a => a.key == CMS.Web.Models.SetupKeys.getQrCodeKey).SingleOrDefault()?.value;
+
+    var address = setups.Where(a => a.key == CMS.Web.Models.SetupKeys.getAddressKey).SingleOrDefault()?.value;
+}
+<!-- End Breadcrumb Part -->
+
+<link href="~/clientside/css/custom/custom.css" rel="stylesheet" />
+<style>
+    .shop-main-list h4 strong {
+        color: #e4b95b;
+    }
+
+    .shop-main-list h4 strong {
+        color: #31aae2;
+    }
+
+    .show-cart tr {
+        background-color: #31aae2;
+        color: black;
+    }
+</style>
+<section>
+    <div class="bredcrumb-section padTB60 positionR">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="theme-heading text-center">
+                        <h3 class="Breadcrumb-title  text-center">Items</h3>
+                        <span class="colorW marB10"> <i class="fa fa-angle-down" aria-hidden="true"></i> </span>
+                    </div>
+                    <div class="breadcrumb-box">
+                        <ul class="breadcrumb text-center colorW marB0">
+                            <li>
+                                <a href="/">home</a>
+                            </li>
+                            <li>Items</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<main>
+    <div class="shop-cart header-collect">
+    </div>
+    <for class="page-header">
+
+        <form action="" method="GET" class="form-inline pull-right">
+
+            <div class="form-group form-group-lg has-feedback" style="margin-top:10px;margin-right:15px;">
+
+                <label class="sr-only" for="search">Search</label>
+
+                @Html.TextBox("name", "", new { @class = "form-control", placeholder = "Search Item" })
+
+                <span class="glyphicons glyphicons-xl glyphicons-group form-control-feedback"></span>
+
+            </div>
+        </form>
+        <div class="main-part">
+
+            <section class="home-icon blog-main-section shop-page">
+
+
+                <div class="container">
+                    <div class="portfolioFilter">
+                        <a href="javascript:;" data-filter="*" class="current">All</a>
+                        @{ long sn = 1;
+
+                            foreach (var menu_category in ViewBag.menuCategories)
+                            {
+
+
+                                <div class="portfolioFilter-inner bg-skeen">
+                                    <a href="javascript:;" data-filter="@String.Concat(".", menu_category.name)">@menu_category.name.ToUpper()</a>
+
+                                </div> sn++;
+                            } }
+
+                    </div>
+                    <div class="portfolioContainer row">
+                        @{ long snn = 1;
+                            @foreach (var menu in Model.menu_details)
+                            {
+                                string defaultFilter = "";
+                                if (snn == 1)
+                                {
+                                    defaultFilter = menu.menu_category.name;
+                                }
+
+                                <div class="col-md-3 col-sm-4 col-xs-12  @menu.menu_category.name fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
+                                    <div class="shop-main-list card-body">
+                                        <div class="shop-product" style="height:250px;">
+                                            <img src="~/images/custom/@menu.image_name" alt="" style="height:250px;border-radius: 10%;">
+                                            <div class="cart-overlay-wrap">
+                                                <div class="cart-overlay">
+                                                    <a href="#" data-id="@menu.menu_id" data-name="@menu.name" data-price="@menu.unit_price" class="add-to-cart shop-cart-btn">ADD TO CART</a>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                        <h5>@menu.name.ToUpperInvariant()</h5>
+                                        <h4><strong> <i class="fa fa-inr" aria-hidden="true"></i> @menu.unit_price</strong></h4>
+                                        <h6> <del>@menu.fake_price</del></h6>
+                                        <a href="/detail/@menu.slug" class="button-default">
+                                            Read More. <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+
+                                </div>
+                                sn++;
+
+
+
+
+                            }
+                        }
+                    </div>
+
+                </div>
+            </section>
+        </div>
+</main>
+<!-- End Main -->
+<div class="modal bd-example-modal-lg" id="cart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg  left-zero">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h5 class="modal-title" id="exampleModalLabel"><strong>Cart</strong></h5>
+            </div>
+
+
+            <div class="col-lg-12">
+
+                <div class="col-lg-6">
+                    <table class="show-cart table" style=" background-color: #31aae2; color: black;">
+                    </table>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class=" text-center">
+                        <h5 class="card-title text-center"><strong>User Information</strong></h5>
+                    </div>
+
+                    <form>
+                        <div class="form-group-sm row">
+                            <label class="col-sm-3 col-form-label">Name</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="full_name" placeholder="Name">
+                            </div>
+                        </div>
+                        <div class="form-group-sm row ">
+                            <label class="col-sm-3 col-form-label">Address</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="address" placeholder="Address">
+                            </div>
+                        </div>
+
+                        <div class="form-group-sm row ">
+                            <label class="col-sm-3 col-form-label">Ph. Number</label>
+                            <div class="col-sm-9">
+                                <input type="number" class="form-control" id="primary_contact" placeholder="Primary Contact Number">
+                            </div>
+                        </div>
+                        <div class="form-group-sm row ">
+                            <label class="col-sm-3 col-form-label">Email</label>
+                            <div class="col-sm-9  ">
+                                <input type="email" class="form-control" id="email" placeholder="Email">
+                            </div>
+                        </div>
+                        <div class="form-group-sm row ">
+                            <label class="col-sm-3 col-form-label">Number</label>
+                            <div class="col-sm-9">
+                                <input type="number" class="form-control" id="secondary_contact" placeholder="Secondary Contact Number">
+                            </div>
+                        </div>
+                        <div class="form-group-sm row">
+                            <label class="col-sm-3 col-form-label">Pay Online</label>
+                            <div class="col-sm-9">
+                                <a href="/images/custom/@qrCode" download="@qrCode">
+                                    <img src="/images/custom/@qrCode" alt="QR Code" width="104" height="102">
+                                </a>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+                <div>Total price:  <i class="fa fa-inr" aria-hidden="true"></i> <span class="total-cart"></span></div>Excluding Delivery Charge
+
+            </div>
+
+
+            <div class="modal-footer">
+                <button class="clear-cart btn btn-danger"> <i class="fa fa-trash" aria-hidden="true"></i> Clear Cart</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"> <i class="fa fa-times" aria-hidden="true"></i> Close</button>
+                <button type="submit" id="savemenu" name="save" class="save btn btn-primary "> Checkout   <i class="fa fa-shopping-cart"></i></button>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="~/clientside/js/Food/cart.js"></script>

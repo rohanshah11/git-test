@@ -1,0 +1,94 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IHtmlLocalizer<SharedResource> Localizer
+
+@model CMS.Web.Areas.Core.ViewModels.OrderViewIndexViewModel;
+
+@{
+    ViewData["Title"] = "print";
+    Layout = null;
+
+}
+@{
+    var setups = (List<CMS.Core.Entity.Setup>)ViewBag.setup;
+
+    var orgName = setups.Where(a => a.key == CMS.Web.Models.SetupKeys.getOrganisationNameKey).SingleOrDefault()?.value;
+
+}
+
+<link href="~/css/bootstrap.min.css" rel="stylesheet" />
+<style>
+    #customers {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+        #customers td, #customers th {
+            border: 1px solid black;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even) {
+        }
+
+        #customers tr:hover {
+            background-color: #ddd;
+        }
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #4CAF50;
+            color: black;
+        }
+
+    h7 {
+        font-family: 'Times New Roman','MV Boli';
+        font-size: 80px;
+        margin-bottom: 30px;
+    }
+</style>
+
+
+
+<table id="customers">
+    <thead><h4 style="text-align:center"><strong>@orgName</strong></h4></thead>
+    <tr>
+        <th>SN</th>
+        <th>Date</th>
+        <th>Name</th>
+        <th>Bill Amount</th>
+
+    </tr>
+    @{ var sn = 1;
+        decimal netTotal = 0;
+
+        foreach (var menu in Model.order_details)
+        {
+            netTotal += menu.total_amount;
+
+            <tr>
+
+                <td>@sn</td>
+                <td>@menu.customer_name</td>
+                <td>@menu.order_date</td>
+                <td>@menu.total_amount</td>
+
+            </tr>
+            sn++;
+        }
+    }
+    <tr>
+        <td colspan="3" class="text-right font-800 font-14"><strong>Net Total</strong></td>
+        <td><strong>@netTotal</strong></td>
+    </tr>
+</table>
+
+<script src="~/js/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        window.print();
+
+    });
+</script>

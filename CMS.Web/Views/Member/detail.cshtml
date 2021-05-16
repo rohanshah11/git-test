@@ -1,0 +1,84 @@
+﻿@model CMS.Core.Entity.Member
+@{
+    Model.description = System.Web.HttpUtility.HtmlDecode(Model.description);
+    ViewData["Title"] = "detail";
+}
+
+
+<section>
+    <div class="bredcrumb-section padTB100 positionR">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="theme-heading text-center">
+                        <h3 class="Breadcrumb-title text-center">team detail</h3>
+                        <span class="colorW marB10"> <i class="fa fa-angle-down" aria-hidden="true"></i> </span>
+                    </div>
+                    <div class="breadcrumb-box">
+                        <ul class="breadcrumb text-center colorW marB0">
+                            <li>
+                                <a href="/">home</a>
+                            </li>
+                            <li>@Model.full_name.ToUpperInvariant()</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--//================Breadcrumb end==============//-->
+<div class="clear"></div>
+<!--//================Team starts==============//-->
+<section class="padT100">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <figure class="marB30">
+                    @{
+                        var imgsSrc = "/images/";
+                        if (string.IsNullOrWhiteSpace(Model.image_url))
+                        {
+                            imgsSrc += "default-image.jpg";
+                        }
+                        else
+                        {
+                            imgsSrc += "custom/" + Model.image_url;
+
+                        }
+                    }
+                    <img src="@imgsSrc" alt="" />
+                </figure>
+            </div>
+            <div class="col-md-8 col-sm-6 col-xs-12">
+                <div class="team-details marB30">
+                    <h3 class="text-left">@Model.full_name.ToUpperInvariant()</h3>
+                    <p class="marB10 special-para text-left">@Model.Designation.name</p>
+                    <p class="marB10 text-left">
+                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+                        laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
+                        laudantium totam rem aperiam
+                    </p>
+                    <p class="marB10 text-left"><span class="fontB">Member Name</span> : @Model.full_name.ToUpperInvariant()</p>
+                    <p class="marB10 text-left"><span class="fontB">Designation</span> :@Model.Designation.name</p>
+                    <p class="marB10 text-left">
+                        <span class="fontB">Address</span> : @Model.address
+                    </p>
+
+                    @{
+                        if (Model.is_contact_enabled)
+                        {
+                            <p class="marB10 text-left"><span class="fontB">Contact No</span> :  @Model.contact_number</p>
+                        }
+                    }
+                </div>
+            </div>
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <p class="marB20 text-left">
+                    @Html.Raw(Model.description)
+                </p>
+
+            </div>
+        </div>
+    </div>
+</section>

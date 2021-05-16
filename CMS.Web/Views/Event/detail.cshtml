@@ -1,0 +1,102 @@
+﻿@model CMS.Core.Entity.Event
+@{
+    Model.description = System.Web.HttpUtility.HtmlDecode(Model.description);
+    var events = Model;
+    ViewData["Title"] = events.title;
+
+}
+
+
+@{ string getImage(string file_name)
+    {
+        var extension = System.IO.Path.GetExtension(file_name).ToLower();
+
+        var imageFormats = new[] { ".jpeg", ".png", ".jpg" };
+
+        var docFormats = new[] { ".xls", ".xlsx" };
+
+        var pdfFormats = new[] { ".pdf" };
+
+        var powerPointFormats = new[] { ".ppt", ".pptx" };
+
+        if (imageFormats.Contains(extension))
+        {
+            return "/images/custom/" + file_name;
+        }
+
+        if (docFormats.Contains(extension))
+        {
+            return "/images/doc.png";
+        }
+
+        if (pdfFormats.Contains(extension))
+        {
+            return "/images/pdf.png";
+        }
+
+        return "/images/ppt.png";
+    } }
+
+
+<section>
+    <div class="bredcrumb-section padTB100 positionR">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="theme-heading text-center">
+                        <h3 class="Breadcrumb-title  text-center">@events.title</h3>
+                        <span class="colorW marB10"> <i class="fa fa-angle-down" aria-hidden="true"></i> </span>
+                    </div>
+                    <div class="breadcrumb-box">
+                        <ul class="breadcrumb text-center colorW marB0">
+                            <li>
+                                <a href="/">home</a>
+                            </li>
+                            <li>@events.title</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="padT100">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <figure class="marB30">
+                    @{
+                        if (events.file_name != null)
+                        {
+                            <img src="/images/custom/@events.file_name" alt="" />
+                        }
+                    }
+                </figure>
+            </div>
+            <div class="col-md-8 col-sm-6 col-xs-12">
+                <div class="team-details marB30">
+                    <h3 class="text-left">@Model.file_name.ToUpperInvariant()</h3>
+
+                    <p class="marB10 text-left"><span class="fontB">Events Time</span> : @events.time</p>
+                    <p class="marB10 text-left"><span class="fontB">Location</span> :@events.venue</p>
+                    <p class="marB10 text-left">
+                        <span class="fontB">Start Date</span> : @events.event_from_date.ToString("dddd, dd MMMM yyyy")
+                    </p>
+                    <p class="marB10 text-left">
+                        <span class="fontB">End Date</span> : @events.event_to_date.ToString("dddd, dd MMMM yyyy")
+                    </p>
+
+
+                </div>
+            </div>
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <p class="marB20 text-left">
+
+                    @Html.Raw(Model.description)
+                </p>
+
+            </div>
+        </div>
+    </div>
+</section>

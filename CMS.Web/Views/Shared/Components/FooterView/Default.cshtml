@@ -1,0 +1,128 @@
+﻿@{ string lat = "26.644442", lon = "87.989753";
+
+                var setups = (List<CMS.Core.Entity.Setup>)ViewBag.setup;
+
+                var contactNo = setups.Where(a => a.key == CMS.Web.Models.SetupKeys.getPhoneNumberKey).SingleOrDefault()?.value;
+
+                var orgName = setups.Where(a => a.key == CMS.Web.Models.SetupKeys.getOrganisationNameKey).SingleOrDefault()?.value;
+
+                var panNo = setups.Where(a => a.key == CMS.Web.Models.SetupKeys.getPanNumberKey).SingleOrDefault()?.value;
+
+                var email = setups.Where(a => a.key == CMS.Web.Models.SetupKeys.getEmailKey).SingleOrDefault()?.value;
+
+                var address = setups.Where(a => a.key == CMS.Web.Models.SetupKeys.getAddressKey).SingleOrDefault()?.value;
+
+                var facebookUrl = setups.Where(a => a.key == CMS.Web.Models.SetupKeys.getFacebookKey).SingleOrDefault()?.value;
+
+                var instaUrl = setups.Where(a => a.key == CMS.Web.Models.SetupKeys.getInstaKey).SingleOrDefault()?.value;
+
+                var TwitterUrl = setups.Where(a => a.key == CMS.Web.Models.SetupKeys.getTwitterKey).SingleOrDefault()?.value;
+
+                var youtubeUrl = setups.Where(a => a.key == CMS.Web.Models.SetupKeys.getYoutubeKey).SingleOrDefault()?.value;
+
+
+                var companyDescription = setups.Where(a => a.key == CMS.Web.Models.SetupKeys.getCompanyShortDescriptionKey).SingleOrDefault()?.value;
+                var location = setups.Where(a => a.key == CMS.Web.Models.SetupKeys.getLocationKey).SingleOrDefault()?.value;
+
+                if (!String.IsNullOrEmpty(location))
+                {
+                    lat = location.Split(',')[0];
+                    lon = location.Split(',')[1];
+                } }
+
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IHtmlLocalizer<SharedResource> Localizer
+
+
+
+
+<script>
+     function initMap() {
+             var uluru = {
+                 lat: @lat, lng: @lon
+             };
+                    var map = new google.maps.Map(document.getElementById('map'),{ zoom: 13, center: uluru });
+                    var marker = new google.maps.Marker({ position: uluru, map: map });
+        }
+</script>
+
+<style>
+    .facebook-details {
+        margin-left: 150px;
+    }
+
+    .facebook-size {
+        height: 140px;
+        width: 100px;
+    }
+</style>
+<script>
+     function initMap() {
+             var uluru = {
+                 lat: @lat, lng: @lon
+             };
+                    var map = new google.maps.Map(document.getElementById('map'),{ zoom: 13, center: uluru });
+                    var marker = new google.maps.Marker({ position: uluru, map: map });
+        }
+</script>
+
+
+<div class="clear"></div>
+<footer class="main_footer">
+    <div class="container">
+        <div class="row">
+            <div class="footer-box padT80 padB50">
+                <div class="col-md-12">
+                    <div class="foot-image marB70">
+                        <figure>
+                            <img src="assets/img/logo-1.png" alt="">
+                        </figure>
+                    </div>
+                </div>
+                <div class="col-md-10 col-md-offset-1 col-xs-12 col-xs-offset-0">
+                    <div class="row">
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <div class="foot-sec marB30">
+                                <div class="f-widget-icon">
+                                    <a href="/" class="square-box default-btn"><span><i class="fa fa-phone" aria-hidden="true"></i></span></a>
+                                </div>
+                                <p>@contactNo</p>
+
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <div class="foot-sec marB30">
+                                <div class="f-widget-icon">
+                                    <a href="mailto:@email" class="square-box default-btn"><span><i class="fa fa-envelope" aria-hidden="true"></i></span></a>
+                                </div>
+                                <p>@email</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <div class="foot-sec marB30">
+                                <div class="f-widget-icon">
+                                    <a href="/" class="square-box default-btn"><span><i class="fa fa-map-marker" aria-hidden="true"></i></span></a>
+                                </div>
+                                <p>@address</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bottom-footer padTB20">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+                    <ul class="footer-social-icon">
+                        <li><a href="//@facebookUrl" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                        <li><a href="//@TwitterUrl" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                        <li><a href="//@instaUrl" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                        <li><a href="//@youtubeUrl" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

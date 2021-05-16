@@ -1,0 +1,59 @@
+﻿@model List<CMS.Core.Entity.Doctors>
+@{
+    ViewData["Title"] = "Doctors";
+}
+<div class="main-content">
+    <section class="inner-header divider layer-overlay overlay-deep" data-bg-img="/clientside/images/default/bg5.jpg">
+        <div class="container pt-0 pb-0">
+            <div class="section-content">
+                <div class="row">
+                    <div class="col-md-12 xs-text-center">
+                        <h3 class="font-28">Doctors</h3>
+                        <ol class="breadcrumb white mt-10">
+                            <li><a href="/">Home</a></li>
+                            <li class="active text-theme-colored">Doctors</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container pb-20">
+            <div class="section-content">
+                <div class="row multi-row-clearfix">
+                    @{
+                        foreach (var doctors in Model)
+                        {
+
+                            var imgsSrc = "/images/";
+                            if (string.IsNullOrWhiteSpace(doctors.image))
+                            {
+                                imgsSrc += "default-image.jpg";
+                            }
+                            else
+                            {
+                                imgsSrc += "custom/" + doctors.image;
+
+                            }
+                            <div class="col-sm-6 col-md-3 mb-60 sm-text-center">
+                                <div class="team maxwidth400">
+                                    <div class="thumb"><img height="300" src="@imgsSrc" alt=""></div>
+                                    <div class="content border-1px p-15 bg-white-light" style="width:263px;">
+                                        <h4 class="name mb-0 mt-0">@doctors.name</h4>
+                                        <h6 class="title mt-0">@doctors.speciality</h6>
+                                        <a class="btn btn-theme-colored btn-sm pull-right flip" href="/doctors/detail/@doctors.slug#">view details</a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+

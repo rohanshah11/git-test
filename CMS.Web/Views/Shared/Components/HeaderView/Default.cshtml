@@ -1,0 +1,159 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IHtmlLocalizer<SharedResource> Localizer
+
+@model CMS.Core.Dto.AppointmentDto
+
+@{ var setups = (List<CMS.Core.Entity.Setup>)ViewBag.setup;
+
+                var contactNo = setups.Where(a => a.key == CMS.Web.Models.SetupKeys.getPhoneNumberKey).SingleOrDefault()?.value;
+
+                var orgName = setups.Where(a => a.key == CMS.Web.Models.SetupKeys.getOrganisationNameKey).SingleOrDefault()?.value;
+
+                var panNo = setups.Where(a => a.key == CMS.Web.Models.SetupKeys.getPanNumberKey).SingleOrDefault()?.value;
+
+                var email = setups.Where(a => a.key == CMS.Web.Models.SetupKeys.getEmailKey).SingleOrDefault()?.value;
+
+                var address = setups.Where(a => a.key == CMS.Web.Models.SetupKeys.getAddressKey).SingleOrDefault()?.value;
+
+                var facebookUrl = setups.Where(a => a.key == CMS.Web.Models.SetupKeys.getFacebookKey).SingleOrDefault()?.value;
+
+                var instaUrl = setups.Where(a => a.key == CMS.Web.Models.SetupKeys.getInstaKey).SingleOrDefault()?.value;
+
+                var TwitterUrl = setups.Where(a => a.key == CMS.Web.Models.SetupKeys.getTwitterKey).SingleOrDefault()?.value;
+
+                var youtubeUrl = setups.Where(a => a.key == CMS.Web.Models.SetupKeys.getYoutubeKey).SingleOrDefault()?.value; }
+<style>
+    .navbar {
+        min-height: 30px;
+        margin-bottom: 0px;
+    }
+
+    ul li:hover ul.dropdown-menu {
+        display: block; /* Display the dropdown */
+    }
+
+    .cart-overlay-wrap {
+        position: absolute;
+        left: 0px;
+        width: 100%;
+        height: 100.1%;
+        background: rgba(49,170,226,0.8);
+        opacity: 0.5;
+        top: 0px;
+        -webkit-border-radius: 20px;
+        -moz-border-radius: 20px;
+        -ms-border-radius: 20px;
+        -o-border-radius: 20px;
+        border-radius: 20px;
+        overflow: hidden;
+        opacity: 0;
+        z-index: -1;
+        -webkit-transform: scale(0) rotate(-180deg);
+        -moz-transform: scale(0) rotate(-180deg);
+        -ms-transform: scale(0) rotate(-180deg);
+        -o-transform: scale(0) rotate(-180deg);
+        transform: scale(0) rotate(-180deg);
+        -webkit-transition: all 0.4s ease 0s;
+        -moz-transition: all 0.4s ease 0s;
+        -ms-transition: all 0.4s ease 0s;
+        -o-transition: all 0.4s ease 0s;
+        transition: all 0.4s ease 0s;
+    }
+
+    .portfolioFilter a.current {
+        background: #31aae2;
+        color: #ffffff;
+    }
+</style>
+<div class="preloader">
+    <div class="thecube">
+        <div class="cube c1"></div>
+        <div class="cube c2"></div>
+        <div class="cube c4"></div>
+        <div class="cube c3"></div>
+        <h4>Loading</h4>
+    </div>
+</div>
+<header class="header">
+    <div id="main-menu" class="wa-main-menu">
+        <!-- Menu -->
+        <div class="wathemes-menu relative">
+            <!-- navbar -->
+            <div class="navbar navbar-default navbar-fixed-top" role="navigation" style="background-color:#fff;color:black;">
+                <div class="container">
+
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="right-pink-shape">
+                            <div class="navbar-header">
+                                <!-- Button For Responsive toggle -->
+
+                                <a class="navbar-brand" href="/">
+                                    <img class="site_logo" alt="Site Logo" src="~/img/images.png" style="height:160px;width:300px;" />
+                                </a>
+                            </div>
+
+                            <!-- Navbar Collapse -->
+                            <div class="navbar">
+                                <!-- nav -->
+                                <ul class="nav navbar-nav">
+                                    <li><a href="/">home</a></li>
+
+                                    @{foreach (var pageCat in (List<CMS.Core.Entity.PageCategory>)ViewBag.pageCategories)
+                                        {
+                            <li>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-angle-down" aria-hidden="true"></i>@pageCat.name</a>
+                                @{ var associatedPages = pageCat.pages;
+                                    <ul class="dropdown-menu">
+                                        @foreach (var pages in associatedPages.Where(i => i.is_enabled == true).ToList())
+                                        {
+                        <li>
+                            <a href="/page/@pages.slug">@pages.title</a>
+
+                        </li>}
+
+                                    </ul> }
+                            </li> } }
+                                    @*<li>
+                                            <a href="/blog">Blogs</a>
+                                        </li>*@
+                                    <li>
+                                        <a href="/menu">Room</a>
+                                    </li>
+                                   
+                                    <li>
+                                        <a href="/services">Services</a>
+                                    </li>
+
+                                    <li>
+                                        <a href="/gallery">Gallery</a>
+                                    </li>
+                                    @*<li>
+                                            <a href="/video">Video</a>
+                                        </li>*@
+                                    <li>
+                                        <a href="/contact">Contact</a>
+                                    </li>
+                                    
+
+                                </ul>
+
+
+
+                            </div>
+                        </div>
+                        <!-- col-md-12 -->
+                    </div>
+                    <!-- row -->
+                </div>
+                <!-- container -->
+            </div>
+            <!-- navbar -->
+        </div>
+        <!--  Menu -->
+    </div>
+</header>
+
+
+

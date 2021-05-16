@@ -1,0 +1,68 @@
+﻿@model CMS.Core.Entity.Notice
+@{
+    var detail = Model;
+    ViewData["Title"] = detail.title;
+
+}
+<style>
+    body {
+        color: #000000;
+        font-size: 13px;
+    }
+</style>
+<section>
+    <div class="bredcrumb-section padTB100 positionR">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="theme-heading text-center">
+                        <h3 class="Breadcrumb-title  text-center">@detail.title</h3>
+                        <span class="colorW marB10"> <i class="fa fa-angle-down" aria-hidden="true"></i> </span>
+                    </div>
+                    <div class="breadcrumb-box">
+                        <ul class="breadcrumb text-center colorW marB0">
+                            <li>
+                                <a href="/">home</a>
+                            </li>
+                            <li>@detail.title</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="padT100">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <figure class="marB30">
+                    @{
+                        var imgsSrc = "/images/";
+                        if (string.IsNullOrWhiteSpace(detail.image_name))
+                        {
+                            imgsSrc += "default-image.jpg";
+                        }
+                        else
+                        {
+                            imgsSrc += "custom/" + detail.image_name;
+
+                        }
+                    }
+                    <img src="@imgsSrc" alt="" />
+                </figure>
+            </div>
+            <div class="col-md-8 col-sm-6 col-xs-12">
+                <div class="team-details marB30">
+                    <h3 class="text-left">@Model.title.ToUpperInvariant()</h3>
+                    <p class="marB10 text-left">
+                        @Html.Raw(detail.description)
+                    </p>
+                    <p class="marB10 text-left"><span class="fontB">  Posted on</span> : @detail.notice_date.ToString("dd, MMM yyyy")</p>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>

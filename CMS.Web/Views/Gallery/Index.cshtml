@@ -1,0 +1,68 @@
+﻿@model CMS.Web.ViewModels.GalleryViewModel
+@{
+    ViewData["Title"] = "Gallery";
+}
+
+
+<section>
+    <div class="bredcrumb-section padTB100 positionR">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="theme-heading text-center">
+                        <h3 class="Breadcrumb-title  text-center">Our portfolio</h3>
+                        <span class="colorW marB10"> <i class="fa fa-angle-down" aria-hidden="true"></i> </span>
+                    </div>
+                    <div class="breadcrumb-box">
+                        <ul class="breadcrumb text-center colorW marB0">
+                            <li>
+                                <a href="/">home</a>
+                            </li>
+                            <li>portfolio</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--//================Breadcrumb end==============//-->
+<div class="clear"></div>
+<!--//================Portfolio starts==============//-->
+<div class="padT100 padB70">
+    <div class="container">
+        <div class="row">
+            @{ foreach (var gallery in Model.gallery)
+                {
+                    var image = gallery.gallery_images.ToList().Where(a => a.is_default == true).Select(a => a.image_name).FirstOrDefault();
+
+
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="theme-hover  marB30">
+                            <figure>
+                                @{
+                                    if (image == null)
+                                    {
+                                        <img alt="img" src="~/img/logo.jpg">
+                                    }
+                                    else
+                                    {
+                                        <a href="/gallery/gallery-img/@gallery.gallery_id"><img alt="img" src="~/images/custom/@image"></a>
+
+                                    }
+
+                                }
+                                <figcaption>
+                                    <div class="inner-content">
+                                        <h2><a href="/gallery/gallery-img/@gallery.gallery_id" class="fancybox" data-fancybox-group="group">@gallery.name.ToUpperInvariant()</a></h2>
+                                    </div>
+
+                                </figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</div>

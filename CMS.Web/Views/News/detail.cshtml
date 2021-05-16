@@ -1,0 +1,60 @@
+﻿@model CMS.Core.Entity.News
+@{
+    var detail = Model;
+    detail.description = System.Web.HttpUtility.HtmlDecode(detail.description);
+    ViewData["Title"] = detail.title;
+
+    }
+    <style>
+        .paragraph {
+            color: #000000;
+        }
+    </style>
+    <div class="main-content">
+        <section class="inner-header divider layer-overlay overlay-deep" data-bg-img="/clientside/images/default/bg5.jpg">
+            <div class="container pt-0 pb-0">
+                <div class="section-content">
+                    <div class="row">
+                        <div class="col-md-12 xs-text-center">
+                            <h3 class="font-28">
+                                News
+                            </h3>
+                            <ol class="breadcrumb white mt-10">
+                                <li><a href="/">Home</a></li>
+                                <li><a href="/news">News</a></li>
+                                <li class="active text-theme-colored">@detail.title</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 wow fadeInUp animation-delay4">
+                        <h1 class="text-gray font-playfair mt-0">@detail.title</h1>
+                        <p><em> News By: @Html.Raw(detail.news_by)</em></p>
+                        <p class="mt-20"> Posted on: @detail.date.ToString("dd, MMM yyyy") </p>
+                        <p class="paragraph"><em> @Html.Raw(detail.description)</em></p>
+                        
+                    </div>
+                    <div class="col-md-4 wow fadeInRight animation-delay4">
+                        @{
+                            var imgSrc = "/images/";
+                            if (string.IsNullOrWhiteSpace(detail.image))
+                            {
+                                imgSrc += "default-image.jpg";
+                            }
+                            else
+                            {
+                                imgSrc += "custom/" + detail.image;
+                            }
+                        }
+                        <img src="@imgSrc" alt=""height="300">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+ 

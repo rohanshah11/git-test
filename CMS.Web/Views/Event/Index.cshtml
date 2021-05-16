@@ -1,0 +1,89 @@
+﻿@model List<CMS.Core.Entity.Event>
+@{
+    ViewData["Title"] = "Events";
+}
+<style>
+    .blog-posts .post.style1 {
+        background-color: #fff;
+        border: 3px solid #FE9901;
+        margin-bottom: 0px;
+        position: relative;
+        height: 150px;
+    }
+</style>
+
+<section>
+    <div class="bredcrumb-section padTB100 positionR">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="theme-heading text-center">
+                        <h3 class="Breadcrumb-title  text-center">Events</h3>
+                        <span class="colorW marB10"> <i class="fa fa-angle-down" aria-hidden="true"></i> </span>
+                    </div>
+                    <div class="breadcrumb-box">
+                        <ul class="breadcrumb text-center colorW marB0">
+                            <li>
+                                <a href="/">home</a>
+                            </li>
+                            <li>Events</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--//================Breadcrumb end==============//-->
+<div class="clear"></div>
+<!--//================Blogs starts==============//-->
+<section class="padT100 padB50">
+    <div class="container">
+        <div class="row">
+            @{ foreach (var events in Model)
+                {
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="blog-img marB20">
+                            <figure>
+                                @{
+                                    var imgSrc = "/images/";
+                                    if (string.IsNullOrWhiteSpace(events.image_name))
+                                    {
+                                        imgSrc += "default-image.jpg";
+                                    }
+                                    else
+                                    {
+                                        imgSrc += "custom/" + events.image_name;
+
+                                    }
+                                }
+                                <img src="@imgSrc" alt="" />
+                            </figure>
+                        </div>
+                        <div class="blog-detail marB50">
+                            <h4 class="colorB marB10 title text-left"><a href="/event/detail/@events.slug">@events.title</a></h4>
+                            <p class="marB10 text-left">
+                                <a href="blog-style-2.html#"><span class="marR10"><i class="fa fa-calendar marR5" aria-hidden="true"></i> @events.event_from_date</span></a>
+                                <a href="blog-style-2.html#"><span class="marR10"><i class="fa fa-comment marR5" aria-hidden="true"></i>12 Comments</span></a>
+                            </p>
+                            @if (System.Web.HttpUtility.HtmlDecode(events.description).Length > 300)
+                            {
+                                <p class="marB10 text-left">@Html.Raw(System.Web.HttpUtility.HtmlDecode(events.description).Substring(0, 300))</p>
+                            }
+                            else
+                            {
+                                <p class="marB10 text-left">@Html.Raw(System.Web.HttpUtility.HtmlDecode(events.description))</p>
+                            }
+                            @if (events.description.Length > 300)
+                            {
+
+                                <p><a class="marB10 text-left" href="/event/detail/@events.slug#">Read more<i class="fa fa-angle-double-right marL10" aria-hidden="true"></i></a></p>
+                            }
+
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</section>

@@ -1,0 +1,81 @@
+﻿@model List<CMS.Core.Entity.Services>
+@{
+    ViewData["Title"] = "Services";
+}
+<!-- ******CONTENT****** -->
+<div class="main-content">
+    <section>
+        <div class="bredcrumb-section padTB100 positionR">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="theme-heading text-center">
+                            <h3 class="Breadcrumb-title text-center">Services</h3>
+                            <span class="colorW marB10"> <i class="fa fa-angle-down" aria-hidden="true"></i> </span>
+                        </div>
+                        <div class="breadcrumb-box">
+                            <ul class="breadcrumb text-center colorW marB0">
+                                <li>
+                                    <a href="/">home</a>
+                                </li>
+                                <li>Services</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+                <section class="padT100 padB50">
+                    <div class="container">
+                        <div class="row">
+                            @{ foreach (var services in Model)
+                                {
+                                    <div class="col-md-4 col-sm-4 col-xs-12">
+                                        <div class="blog-img marB20">
+                                            <figure>
+                                                @{
+                                                    var imgSrc = "/images/";
+                                                    if (string.IsNullOrWhiteSpace(services.image))
+                                                    {
+                                                        imgSrc += "default-image.jpg";
+                                                    }
+                                                    else
+                                                    {
+                                                        imgSrc += "custom/" + services.image;
+
+                                                    }
+
+                                                }
+                                                <img src="@imgSrc" alt="" />
+                                            </figure>
+                                        </div>
+                                        <div class="blog-detail marB50">
+                                            <h4 class="colorB marB10 title text-left"><a href="/services/detail/@services.slug">@services.name</a></h4>
+                                            <p class="marB10 text-left">
+                                            </p>
+                                            @if (System.Web.HttpUtility.HtmlDecode(services.description).Length > 300)
+                                            {
+                                                <p class="marB10 text-left">@Html.Raw(System.Web.HttpUtility.HtmlDecode(services.description).Substring(0, 300))</p>
+                                            }
+                                            else
+                                            {
+                                                <p class="marB10 text-left">@Html.Raw(System.Web.HttpUtility.HtmlDecode(services.description))</p>
+                                            }
+                                            @if (services.description.Length > 300)
+                                            {
+
+                                                <p><a class="marB10 text-left" href="/services/detail/@services.slug#">Read more<i class="fa fa-angle-double-right marL10" aria-hidden="true"></i></a></p>
+                                            }
+                                        </div>
+                                    </div>
+
+                                }
+                            }
+                            <div class="clear"></div>
+
+                         
+                        </div>
+                    </div>
+                </section>

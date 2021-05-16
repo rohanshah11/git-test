@@ -1,0 +1,65 @@
+﻿@model CMS.Core.Dto.FaqDto
+@{
+    ViewData["Title"] = "Update Faq";
+}
+<div class="page-breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a href="/admin">Home</a>
+        </li>
+        <li>
+            Update Faq
+        </li>
+    </ul>
+</div>
+<div class="page-body">
+    <div class="row">
+        <div class="col-lg-12 col-sm-12 col-xs-12">
+            <div class="row">
+                <div class="col-lg-12 col-sm-12 col-xs-12">
+                    <div class="widget radius-bordered">
+                        <div class="widget-header">
+                            <span class="widget-caption">UPDATE FAQ</span>
+                        </div>
+                        <div class="widget-body">
+                            <form class="form-horizontal" method="post" enctype="multipart/form-data" action="/admin/faq/edit">
+
+                                @Html.ValidationSummary(true)
+
+                                @Html.AntiForgeryToken()
+
+                                @Html.HiddenFor(a => a.faq_id)
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        @Html.LabelFor(a => a.question, new { @class = "col-md-2 control-label asterik" })
+                                        <div class="col-md-6">
+                                            @Html.TextBoxFor(a => a.question, new { @class = "form-control" })
+                                            <p class="text-danger">@Html.ValidationMessageFor(a => a.question)</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        @Html.LabelFor(a => a.answer, new { @class = "col-md-2 control-label asterik" })
+                                        <div class="col-md-8">
+                                            @Html.TextAreaFor(a => a.answer, new { @class = "form-control", @rows = "15", @cols = "10" })
+                                            <p class="text-danger">@Html.ValidationMessageFor(a => a.answer)</p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <input class="btn btn-palegreen pull-right" type="submit" value="Update" />
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

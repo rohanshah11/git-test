@@ -1,0 +1,157 @@
+﻿@model CMS.Core.Entity.Doctors
+@{
+    var doctors = Model;
+    ViewData["Title"] = doctors.name;
+
+}
+
+<div class="main-content">
+    <section class="inner-header divider layer-overlay overlay-deep" data-bg-img="/clientside/images/default/bg5.jpg">
+        <div class="container pt-0 pb-0">
+            <div class="section-content">
+                <div class="row">
+                    <div class="col-md-12 xs-text-center">
+                        <h3 class="font-28">Doctor Details</h3>
+                        <ol class="breadcrumb white mt-10">
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/doctors">Doctor</a></li>
+                            <li class="active text-theme-colored">@doctors.name</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="">
+        <div class="container">
+            <div class="section-content">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-8 col-md-8 pull-right pl-60 pl-sm-15">
+                        <div>
+                            <h3>@Model.name</h3>
+                        </div>
+                        <div class="mt-30">
+                            <dl class="dl-horizontal doctor-info">
+
+                                <hr>
+                                <dt>Address</dt>
+                                <dd>
+                                    <p>@Model.address</p>
+                                </dd>
+                                <hr>
+
+                                <dt>Education</dt>
+                                <dd>
+                                    @Model.education
+                                </dd>
+                                <hr>
+                                <dt>Experience</dt>
+                                <dd>
+                                    @Model.experience
+                                </dd>
+                                <hr>
+                                <dt>Speciality</dt>
+                                <dd>
+                                    @Model.speciality
+                                </dd>
+                                <hr>
+                                @{
+                                    if (Model.is_contact_enabled == true)
+                                    {
+                                        <dt>Phone No</dt>
+                                        <dd>
+                                            @Model.contact_number
+                                        </dd>
+                                        <hr>
+                                    }
+                                }
+
+                                <dt>Email</dt>
+                                <dd>
+                                    @Model.email
+                                </dd>
+                                <hr>
+                                <dt>Website</dt>
+                                <dd>
+                                    <a target="_blank" href="@Model.website">@Model.website</a>
+                                </dd>
+                                <hr>
+                                <dt>Facebook</dt>
+                                <dd>
+                                    <a target="_blank" href="@Model.facebook">@Model.facebook</a>
+                                </dd>
+                                <hr>
+                                <dt>Twitter</dt>
+                                <dd>
+                                    <a target="_blank" href="@Model.twitter">@Model.twitter</a>
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                    <div class="col-sx-12 col-sm-4 col-md-4 sidebar pull-left">
+                        <div class="doctor-thumb">
+                            @{
+                                var imgsSrc = "/images/";
+                                if (string.IsNullOrWhiteSpace(Model.image))
+                                {
+                                    imgsSrc += "default-image.jpg";
+                                }
+                                else
+                                {
+                                    imgsSrc += "custom/" + Model.image;
+
+                                }
+                            }
+                            <img src="@imgsSrc" alt="">
+                        </div>
+                        <ul class="social-icons icon-gray mt-15 mb-15">
+                            <li><a target="_blank" href="@Model.facebook"><i class="fa fa-facebook"></i></a></li>
+                            <li><a target="_blank" href="@Model.twitter"><i class="fa fa-twitter"></i></a></li>
+                            <li><a target="_blank" href="@Model.website"><i class="fa fa-globe"></i></a></li>
+                        </ul>
+                        <div class="mt-30 p-30" style="border: 5px solid #777777;">
+                            <h5 class="text-theme-colored title-border mb-20">Testimonial</h5>
+                            <div class="testimonial-carousel-info owl-nav-top ">
+                                @{
+                                    var test = 1;
+                                    foreach (var testimonialSlider in ViewBag.testimonial)
+                                    {
+                                        var imgSrc = "/images/";
+                                        if (string.IsNullOrWhiteSpace(testimonialSlider.image_name))
+                                        {
+                                            imgSrc += "default-image.jpg";
+                                        }
+                                        else
+                                        {
+                                            imgSrc += "custom/" + testimonialSlider.image_name;
+
+                                        }
+                                        var testimonialClass = "";
+                                        if (test == 1)
+                                        {
+                                            testimonialClass = "active";
+                                        }
+                                        <div class="item @testimonialClass">
+                                            <div class="comment">
+                                                <p>@testimonialSlider.statement</p>
+                                            </div>
+                                            <div class="content mt-20">
+                                                <div class="thumb pull-right">
+                                                    <img class="img-circle" alt="" src="@imgSrc">
+                                                </div>
+                                                <div class="patient-details text-right pull-right mr-20 mt-10">
+                                                    <h5 class="author">@testimonialSlider.person_name</h5>
+                                                    <h6 class="title">@testimonialSlider.designation</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

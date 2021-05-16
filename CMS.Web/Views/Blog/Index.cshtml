@@ -1,0 +1,92 @@
+﻿@model List<CMS.Core.Entity.Blog>
+@{
+    ViewData["Title"] = "Blogs";
+}
+
+
+
+<section>
+    <div class="bredcrumb-section positionR">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="theme-heading text-center">
+                        <h3 class="Breadcrumb-title  text-center">blog</h3>
+                        <span class="colorW marB10"> <i class="fa fa-angle-down" aria-hidden="true"></i> </span>
+                    </div>
+                    <div class="breadcrumb-box">
+                        <ul class="breadcrumb text-center colorW marB0">
+                            <li>
+                                <a href="/">home</a>
+                            </li>
+                            <li>blog</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--//================Breadcrumb end==============//-->
+<div class="clear"></div>
+<!--//================Blogs starts==============//-->
+<section class="padT100 padB50">
+    <div class="container">
+        <div class="row">
+            @{ foreach (var blogs in Model)
+                {
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="blog-img marB20">
+                            <figure>
+                                @{
+                                    var imgSrc = "/images/";
+                                    if (string.IsNullOrWhiteSpace(blogs.image_name))
+                                    {
+                                        imgSrc += "default-image.jpg";
+                                    }
+                                    else
+                                    {
+                                        imgSrc += "custom/" + blogs.image_name;
+                                    }
+                                }
+                                <img src="@imgSrc" alt="" />
+                            </figure>
+                        </div>
+                        <div class="blog-detail marB50">
+                            <h4 class="colorB marB10 title text-left"><a href="/blog/detail/@blogs.slug">@blogs.title</a></h4>
+                            <p class="marB10 text-left">
+                                <a href="#"><span class="marR10"><i class="fa fa-calendar marR5" aria-hidden="true"></i>@blogs.posted_on.ToString("dddd,dd MMMM yyyy")</span></a>
+                            </p>
+                            @if (System.Web.HttpUtility.HtmlDecode(blogs.description).Length > 300)
+                            {
+                                <p class="marB10 text-left">@Html.Raw(System.Web.HttpUtility.HtmlDecode(blogs.description).Substring(0, 300))</p>
+                            }
+                            else
+                            {
+                                <p class="marB10 text-left">@Html.Raw(System.Web.HttpUtility.HtmlDecode(blogs.description))</p>
+                            }
+                            @if (blogs.description.Length > 300)
+                            {
+
+                                <p><a class="marB10 text-left" href="/blog/detail/@blogs.slug">Read more<i class="fa fa-angle-double-right marL10" aria-hidden="true"></i></a></p>
+                            }
+                        </div>
+                    </div>
+                    
+                }
+            }
+            <div class="clear"></div>
+            
+            @*<div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="pagination-box marB50">
+                    <a href="blog-style-1.html#"><span><i class="fa fa-angle-left" aria-hidden="true"></i></span></a>
+                    <a href="blog-style-1.html#"><span>1</span></a>
+                    <a href="blog-style-1.html#"><span>2</span></a>
+                    <a href="blog-style-1.html#"><span>3</span></a>
+                    <a href="blog-style-1.html#"><span>4</span></a>
+                    <a href="blog-style-1.html#"><span><i class="fa fa-angle-right" aria-hidden="true"></i></span></a>
+                </div>
+                </div>*@
+            </div>
+        </div>
+</section>

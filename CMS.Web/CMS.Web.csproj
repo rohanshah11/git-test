@@ -1,0 +1,227 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Areas\Core\**" />
+    <Compile Remove="wwwroot\clientside\css\fonts\**" />
+    <Compile Remove="wwwroot\clientside\css\Food\**" />
+    <Compile Remove="wwwroot\clientside\css\images\**" />
+    <Compile Remove="wwwroot\clientside\images\custom\**" />
+    <Compile Remove="wwwroot\clientside\js\User\**" />
+    <Content Remove="Areas\Core\**" />
+    <Content Remove="wwwroot\clientside\css\fonts\**" />
+    <Content Remove="wwwroot\clientside\css\Food\**" />
+    <Content Remove="wwwroot\clientside\css\images\**" />
+    <Content Remove="wwwroot\clientside\images\custom\**" />
+    <Content Remove="wwwroot\clientside\js\User\**" />
+    <EmbeddedResource Remove="Areas\Core\**" />
+    <EmbeddedResource Remove="wwwroot\clientside\css\fonts\**" />
+    <EmbeddedResource Remove="wwwroot\clientside\css\Food\**" />
+    <EmbeddedResource Remove="wwwroot\clientside\css\images\**" />
+    <EmbeddedResource Remove="wwwroot\clientside\images\custom\**" />
+    <EmbeddedResource Remove="wwwroot\clientside\js\User\**" />
+    <None Remove="Areas\Core\**" />
+    <None Remove="wwwroot\clientside\css\fonts\**" />
+    <None Remove="wwwroot\clientside\css\Food\**" />
+    <None Remove="wwwroot\clientside\css\images\**" />
+    <None Remove="wwwroot\clientside\images\custom\**" />
+    <None Remove="wwwroot\clientside\js\User\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="4.8.1" />
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.3.1" />
+    <PackageReference Include="AutoMapper" Version="8.1.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.1.0" />
+    <PackageReference Include="LazZiya.ImageResize" Version="3.0.2" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Hosting" Version="2.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.1.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Localization" Version="2.1.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="2.1.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.10" />
+    <PackageReference Include="Net.Codecrete.QrCodeGenerator" Version="1.6.0" />
+    <PackageReference Include="Scrutor" Version="3.2.2" />
+    <PackageReference Include="SixLabors.ImageSharp" Version="1.0.1" />
+    <PackageReference Include="System.Collections" Version="4.3.0" />
+    <PackageReference Include="System.Drawing.Common" Version="4.5.1" />
+    <PackageReference Include="Tinify" Version="1.5.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\User-management\Data\" />
+    <Folder Include="wwwroot\css\User\" />
+    <Folder Include="wwwroot\Images\custom\" />
+    <Folder Include="wwwroot\Images\custom\" />
+    <Folder Include="wwwroot\js\User\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\clientside\js\library\animation\wow.min.js" />
+    <None Include="wwwroot\clientside\js\library\bootstrap\bootstrap-datepicker.js" />
+    <None Include="wwwroot\clientside\js\library\bootstrap\bootstrap.min.js" />
+    <None Include="wwwroot\clientside\js\library\form-field\jquery.formstyler.min.js" />
+    <None Include="wwwroot\clientside\js\library\isotop\isotop.js" />
+    <None Include="wwwroot\clientside\js\library\isotop\packery-mode.pkgd.min.js" />
+    <None Include="wwwroot\clientside\js\library\magnific\jquery.magnific-popup.min.js" />
+    <None Include="wwwroot\clientside\js\library\owl-carousel\owl.carousel.min.js" />
+    <None Include="wwwroot\clientside\js\library\parallax\jquery.stellar.js" />
+    <None Include="wwwroot\clientside\js\library\revolution-plugin\jquery.themepunch.plugins.min.js" />
+    <None Include="wwwroot\clientside\js\library\revolution-plugin\jquery.themepunch.revolution.min.js" />
+    <None Include="wwwroot\clientside\js\library\scroll-bar\jquery.mCustomScrollbar.concat.min.js" />
+    <None Include="wwwroot\clientside\js\library\slick-slider\slick.min.js" />
+    <None Include="wwwroot\clientside\css\MeetingPointCss\jquery.fancybox.css" />
+    <None Include="wwwroot\fonts\School\fonts\.DS_Store" />
+    <None Include="wwwroot\fonts\School\fonts\bootstrap\glyphicons-halflings-regular.svg" />
+    <None Include="wwwroot\fonts\School\fonts\bootstrap\glyphicons-halflings-regular.woff2" />
+    <None Include="wwwroot\fonts\School\fonts\icomoon\.DS_Store" />
+    <None Include="wwwroot\fonts\School\fonts\icomoon\icomoon.svg" />
+    <None Include="wwwroot\js\tiny-mce\langs\readme.md" />
+    <None Include="wwwroot\js\tiny-mce\plugins\advlist\plugin.min.js" />
+    <None Include="wwwroot\js\tiny-mce\plugins\anchor\plugin.min.js" />
+    <None Include="wwwroot\js\tiny-mce\plugins\autolink\plugin.min.js" />
+    <None Include="wwwroot\js\tiny-mce\plugins\autoresize\plugin.min.js" />
+    <None Include="wwwroot\js\tiny-mce\plugins\autosave\plugin.min.js" />
+    <None Include="wwwroot\js\tiny-mce\plugins\bbcode\plugin.min.js" />
+    <None Include="wwwroot\js\tiny-mce\plugins\charmap\plugin.min.js" />
+    <None Include="wwwroot\js\tiny-mce\plugins\code\plugin.min.js" />
+    <None Include="wwwroot\js\tiny-mce\plugins\colorpicker\plugin.min.js" />
+    <None Include="wwwroot\js\tiny-mce\plugins\contextmenu\plugin.min.js" />
+    <None Include="wwwroot\js\tiny-mce\plugins\directionality\plugin.min.js" />
+    <None Include="wwwroot\js\tiny-mce\plugins\emoticons\plugin.min.js" />
+    <None Include="wwwroot\js\tiny-mce\plugins\example\plugin.min.js" />
+    <None Include="wwwroot\js\tiny-mce\plugins\example_dependency\plugin.min.js" />
+    <None Include="wwwroot\js\tiny-mce\plugins\fullpage\plugin.min.js" />
+    <None Include="wwwroot\js\tiny-mce\plugins\fullscreen\plugin.min.js" />
+    <None Include="wwwroot\js\tiny-mce\plugins\hr\plugin.min.js" />
+    <None Include="wwwroot\js\tiny-mce\plugins\imagetools\plugin.min.js" />
+    <None Include="wwwroot\js\tiny-mce\plugins\image\plugin.min.js" />
+    <None Include="wwwroot\js\tiny-mce\plugins\importcss\plugin.min.js" />
+    <None Include="wwwroot\js\tiny-mce\plugins\insertdatetime\plugin.min.js" />
+    <None Include="wwwroot\js\tiny-mce\plugins\layer\plugin.min.js" />
+    <None Include="wwwroot\js\tiny-mce\plugins\legacyoutput\plugin.min.js" />
+    <None Include="wwwroot\js\tiny-mce\plugins\link\plugin.min.js" />
+    <None Include="wwwroot\js\tiny-mce\plugins\lists\plugin.min.js" />
+    <None Include="wwwroot\js\tiny-mce\plugins\media\moxieplayer.swf" />
+    <None Include="wwwroot\js\tiny-mce\plugins\media\plugin.min.js" />
+    <None Include="wwwroot\js\tiny-mce\plugins\nonbreaking\plugin.min.js" />
+    <None Include="wwwroot\js\tiny-mce\plugins\noneditable\plugin.min.js" />
+    <None Include="wwwroot\js\tiny-mce\plugins\pagebreak\plugin.min.js" />
+    <None Include="wwwroot\js\tiny-mce\plugins\paste\plugin.min.js" />
+    <None Include="wwwroot\js\tiny-mce\plugins\preview\plugin.min.js" />
+    <None Include="wwwroot\js\tiny-mce\plugins\print\plugin.min.js" />
+    <None Include="wwwroot\js\tiny-mce\plugins\save\plugin.min.js" />
+    <None Include="wwwroot\js\tiny-mce\plugins\searchreplace\plugin.min.js" />
+    <None Include="wwwroot\js\tiny-mce\plugins\spellchecker\plugin.min.js" />
+    <None Include="wwwroot\js\tiny-mce\plugins\tabfocus\plugin.min.js" />
+    <None Include="wwwroot\js\tiny-mce\plugins\table\plugin.min.js" />
+    <None Include="wwwroot\js\tiny-mce\plugins\template\plugin.min.js" />
+    <None Include="wwwroot\js\tiny-mce\plugins\textcolor\plugin.min.js" />
+    <None Include="wwwroot\js\tiny-mce\plugins\textpattern\plugin.min.js" />
+    <None Include="wwwroot\js\tiny-mce\plugins\visualblocks\plugin.min.js" />
+    <None Include="wwwroot\js\tiny-mce\plugins\visualchars\plugin.min.js" />
+    <None Include="wwwroot\js\tiny-mce\plugins\wordcount\plugin.min.js" />
+    <None Include="wwwroot\js\tiny-mce\skins\lightgray\fonts\tinymce-small.svg" />
+    <None Include="wwwroot\js\tiny-mce\skins\lightgray\fonts\tinymce.svg" />
+    <None Include="wwwroot\js\tiny-mce\themes\modern\theme.min.js" />
+    <None Include="wwwroot\scss\Schoolscss\.DS_Store" />
+    <None Include="wwwroot\scss\Schoolscss\bootstrap.scss" />
+    <None Include="wwwroot\scss\Schoolscss\bootstrap\mixins\_alerts.scss" />
+    <None Include="wwwroot\scss\Schoolscss\bootstrap\mixins\_background-variant.scss" />
+    <None Include="wwwroot\scss\Schoolscss\bootstrap\mixins\_border-radius.scss" />
+    <None Include="wwwroot\scss\Schoolscss\bootstrap\mixins\_buttons.scss" />
+    <None Include="wwwroot\scss\Schoolscss\bootstrap\mixins\_center-block.scss" />
+    <None Include="wwwroot\scss\Schoolscss\bootstrap\mixins\_clearfix.scss" />
+    <None Include="wwwroot\scss\Schoolscss\bootstrap\mixins\_forms.scss" />
+    <None Include="wwwroot\scss\Schoolscss\bootstrap\mixins\_gradients.scss" />
+    <None Include="wwwroot\scss\Schoolscss\bootstrap\mixins\_grid-framework.scss" />
+    <None Include="wwwroot\scss\Schoolscss\bootstrap\mixins\_grid.scss" />
+    <None Include="wwwroot\scss\Schoolscss\bootstrap\mixins\_hide-text.scss" />
+    <None Include="wwwroot\scss\Schoolscss\bootstrap\mixins\_image.scss" />
+    <None Include="wwwroot\scss\Schoolscss\bootstrap\mixins\_labels.scss" />
+    <None Include="wwwroot\scss\Schoolscss\bootstrap\mixins\_list-group.scss" />
+    <None Include="wwwroot\scss\Schoolscss\bootstrap\mixins\_nav-divider.scss" />
+    <None Include="wwwroot\scss\Schoolscss\bootstrap\mixins\_nav-vertical-align.scss" />
+    <None Include="wwwroot\scss\Schoolscss\bootstrap\mixins\_opacity.scss" />
+    <None Include="wwwroot\scss\Schoolscss\bootstrap\mixins\_pagination.scss" />
+    <None Include="wwwroot\scss\Schoolscss\bootstrap\mixins\_panels.scss" />
+    <None Include="wwwroot\scss\Schoolscss\bootstrap\mixins\_progress-bar.scss" />
+    <None Include="wwwroot\scss\Schoolscss\bootstrap\mixins\_reset-filter.scss" />
+    <None Include="wwwroot\scss\Schoolscss\bootstrap\mixins\_reset-text.scss" />
+    <None Include="wwwroot\scss\Schoolscss\bootstrap\mixins\_resize.scss" />
+    <None Include="wwwroot\scss\Schoolscss\bootstrap\mixins\_responsive-visibility.scss" />
+    <None Include="wwwroot\scss\Schoolscss\bootstrap\mixins\_size.scss" />
+    <None Include="wwwroot\scss\Schoolscss\bootstrap\mixins\_tab-focus.scss" />
+    <None Include="wwwroot\scss\Schoolscss\bootstrap\mixins\_table-row.scss" />
+    <None Include="wwwroot\scss\Schoolscss\bootstrap\mixins\_text-emphasis.scss" />
+    <None Include="wwwroot\scss\Schoolscss\bootstrap\mixins\_text-overflow.scss" />
+    <None Include="wwwroot\scss\Schoolscss\bootstrap\mixins\_vendor-prefixes.scss" />
+    <None Include="wwwroot\scss\Schoolscss\bootstrap\_alerts.scss" />
+    <None Include="wwwroot\scss\Schoolscss\bootstrap\_badges.scss" />
+    <None Include="wwwroot\scss\Schoolscss\bootstrap\_breadcrumbs.scss" />
+    <None Include="wwwroot\scss\Schoolscss\bootstrap\_button-groups.scss" />
+    <None Include="wwwroot\scss\Schoolscss\bootstrap\_buttons.scss" />
+    <None Include="wwwroot\scss\Schoolscss\bootstrap\_carousel.scss" />
+    <None Include="wwwroot\scss\Schoolscss\bootstrap\_close.scss" />
+    <None Include="wwwroot\scss\Schoolscss\bootstrap\_code.scss" />
+    <None Include="wwwroot\scss\Schoolscss\bootstrap\_component-animations.scss" />
+    <None Include="wwwroot\scss\Schoolscss\bootstrap\_dropdowns.scss" />
+    <None Include="wwwroot\scss\Schoolscss\bootstrap\_forms.scss" />
+    <None Include="wwwroot\scss\Schoolscss\bootstrap\_glyphicons.scss" />
+    <None Include="wwwroot\scss\Schoolscss\bootstrap\_grid.scss" />
+    <None Include="wwwroot\scss\Schoolscss\bootstrap\_input-groups.scss" />
+    <None Include="wwwroot\scss\Schoolscss\bootstrap\_jumbotron.scss" />
+    <None Include="wwwroot\scss\Schoolscss\bootstrap\_labels.scss" />
+    <None Include="wwwroot\scss\Schoolscss\bootstrap\_list-group.scss" />
+    <None Include="wwwroot\scss\Schoolscss\bootstrap\_media.scss" />
+    <None Include="wwwroot\scss\Schoolscss\bootstrap\_mixins.scss" />
+    <None Include="wwwroot\scss\Schoolscss\bootstrap\_modals.scss" />
+    <None Include="wwwroot\scss\Schoolscss\bootstrap\_navbar.scss" />
+    <None Include="wwwroot\scss\Schoolscss\bootstrap\_navs.scss" />
+    <None Include="wwwroot\scss\Schoolscss\bootstrap\_normalize.scss" />
+    <None Include="wwwroot\scss\Schoolscss\bootstrap\_pager.scss" />
+    <None Include="wwwroot\scss\Schoolscss\bootstrap\_pagination.scss" />
+    <None Include="wwwroot\scss\Schoolscss\bootstrap\_panels.scss" />
+    <None Include="wwwroot\scss\Schoolscss\bootstrap\_popovers.scss" />
+    <None Include="wwwroot\scss\Schoolscss\bootstrap\_print.scss" />
+    <None Include="wwwroot\scss\Schoolscss\bootstrap\_progress-bars.scss" />
+    <None Include="wwwroot\scss\Schoolscss\bootstrap\_responsive-embed.scss" />
+    <None Include="wwwroot\scss\Schoolscss\bootstrap\_responsive-utilities.scss" />
+    <None Include="wwwroot\scss\Schoolscss\bootstrap\_scaffolding.scss" />
+    <None Include="wwwroot\scss\Schoolscss\bootstrap\_tables.scss" />
+    <None Include="wwwroot\scss\Schoolscss\bootstrap\_theme.scss" />
+    <None Include="wwwroot\scss\Schoolscss\bootstrap\_thumbnails.scss" />
+    <None Include="wwwroot\scss\Schoolscss\bootstrap\_tooltip.scss" />
+    <None Include="wwwroot\scss\Schoolscss\bootstrap\_type.scss" />
+    <None Include="wwwroot\scss\Schoolscss\bootstrap\_utilities.scss" />
+    <None Include="wwwroot\scss\Schoolscss\bootstrap\_variables.scss" />
+    <None Include="wwwroot\scss\Schoolscss\bootstrap\_wells.scss" />
+    <None Include="wwwroot\scss\Schoolscss\style.scss" />
+    <None Include="wwwroot\scss\Schoolscss\_bootstrap-compass.scss" />
+    <None Include="wwwroot\scss\Schoolscss\_bootstrap-mincer.scss" />
+    <None Include="wwwroot\scss\Schoolscss\_bootstrap-sprockets.scss" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\cms-user\Cafe.User\Cafe.User.csproj" />
+    <ProjectReference Include="..\CMS.Core\CMS.Core\CMS.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Areas\User-management\Views\_ViewImports.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\User-management\Views\_ViewStart.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Shared\_AdminLayout.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+  </ItemGroup>
+
+</Project>

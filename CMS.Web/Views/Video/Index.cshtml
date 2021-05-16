@@ -1,0 +1,72 @@
+﻿@model List<CMS.Core.Entity.Video>
+@{
+    ViewData["Title"] = "Video";
+}
+
+<section>
+    <div class="bredcrumb-section padTB100 positionR">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="theme-heading text-center">
+                        <h3 class="Breadcrumb-title text-center">Video</h3>
+                        <span class="colorW marB10"> <i class="fa fa-angle-down" aria-hidden="true"></i> </span>
+                    </div>
+                    <div class="breadcrumb-box">
+                        <ul class="breadcrumb text-center colorW marB0">
+                            <li>
+                                <a href="/">home</a>
+                            </li>
+                            <li>Video</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="clear"></div>
+
+<main style="margin-top:50px;">
+    <div class="main-part">
+
+        <section class="home-icon">
+            <div class="container">
+                <div class="gallery-royal">
+                    <div class="row gallery-filter">
+                        @{ foreach (var video in Model)
+                            {
+                                var desc = "";
+                                if (video.description != null)
+                                {
+                                    if (video.description.Length > 80)
+                                    {
+                                        desc = video.description.Substring(0, 80);
+                                    }
+                                    else
+                                    {
+                                        desc = video.description;
+                                    }
+                                }
+
+                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                    <iframe width="360" height="240" src="@String.Concat("https://www.youtube.com/embed/", video.video_url)" allowfullscreen></iframe>
+                                    <h4 class="colorB marB10 title text-left"><a>@video.title</a></h4>
+                                    <p>@desc</p>
+
+                                </div>
+                            }
+                        }
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </div>
+</main>
+
+
+
+
+

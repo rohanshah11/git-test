@@ -1,0 +1,54 @@
+﻿@model CMS.Web.ViewModels.GalleryImageViewModel
+@{
+    ViewData["Title"] = "Gallery";
+}
+
+<section>
+    <div class="bredcrumb-section padTB100 positionR">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="theme-heading text-center">
+                        <h3 class="Breadcrumb-title  text-center">Our Images</h3>
+                        <span class="colorW marB10"> <i class="fa fa-angle-down" aria-hidden="true"></i> </span>
+                    </div>
+                    <div class="breadcrumb-box">
+                        <ul class="breadcrumb text-center colorW marB0">
+                            <li>
+                                <a href="/">home</a>
+                            </li>
+                            <li>Gallery Images</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--//================Breadcrumb end==============//-->
+<div class="clear"></div>
+<!--//================Portfolio starts==============//-->
+<div class="padT100 padB70">
+    <div class="container">
+        <div class="row">
+            @{ foreach (var gallery in Model.gellery_details)
+                {
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="theme-hover  marB30">
+                            <figure>
+                                <img src="~/images/custom/@gallery.image_name" alt=""style="width:450px;height:250px;">
+                                <figcaption>
+                                    <div class="inner-content">
+                                        <h2><a href="~/images/custom/@gallery.image_name" class="fancybox" data-fancybox-group="group">@gallery.title</a></h2>
+                                        <p>@gallery.description</p>
+                                    </div>
+                                    <p class="left-icon"><a href="~/images/custom/@gallery.image_name" class="fancybox" data-fancybox-group="group"><span class="icon arrows-expand"></span></a></p>
+                                </figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</div>
